@@ -1,0 +1,1787 @@
+{
+  "version": "1.0",
+  "totalVideosProcessed": 222,
+  "totalSuccessful": 221,
+  "totalFailed": 1,
+  "videos": {
+    "LRX8TWC2hTM": {
+      "videoId": "LRX8TWC2hTM",
+      "videoTitle": "I Make $60K/Month From the Most Boring SaaS on the Internet",
+      "videoUrl": "https://www.youtube.com/watch?v=LRX8TWC2hTM",
+      "chunksCount": 18,
+      "transcriptLength": 13639,
+      "scrapedAt": "2026-03-18T12:00:24.165Z",
+      "status": "success"
+    },
+    "l4WEqPX52Cg": {
+      "videoId": "l4WEqPX52Cg",
+      "videoTitle": "How This $250K/Month SaaS Got Its First 100 Users (Steal This Playbook)",
+      "videoUrl": "https://www.youtube.com/watch?v=l4WEqPX52Cg",
+      "chunksCount": 23,
+      "transcriptLength": 16931,
+      "scrapedAt": "2026-03-18T12:00:24.184Z",
+      "status": "success"
+    },
+    "LKARRA0MvY4": {
+      "videoId": "LKARRA0MvY4",
+      "videoTitle": "I Built a $10K/Month SaaS Using Other People's Customers",
+      "videoUrl": "https://www.youtube.com/watch?v=LKARRA0MvY4",
+      "chunksCount": 25,
+      "transcriptLength": 19040,
+      "scrapedAt": "2026-03-18T12:00:24.829Z",
+      "status": "success"
+    },
+    "E_rX4JJrYkY": {
+      "videoId": "E_rX4JJrYkY",
+      "videoTitle": "Zero to $40K/Month With One Marketing Channel (No Social Media)",
+      "videoUrl": "https://www.youtube.com/watch?v=E_rX4JJrYkY",
+      "chunksCount": 30,
+      "transcriptLength": 21810,
+      "scrapedAt": "2026-03-18T12:00:27.900Z",
+      "status": "success"
+    },
+    "qIlX7cQ2UdU": {
+      "videoId": "qIlX7cQ2UdU",
+      "videoTitle": "I Make $15K/Month From One Website",
+      "videoUrl": "https://www.youtube.com/watch?v=qIlX7cQ2UdU",
+      "chunksCount": 28,
+      "transcriptLength": 20747,
+      "scrapedAt": "2026-03-18T12:00:25.781Z",
+      "status": "success"
+    },
+    "7vz6b_Ohdl0": {
+      "videoId": "7vz6b_Ohdl0",
+      "videoTitle": "I Built a Niche App to $9K MRR",
+      "videoUrl": "https://www.youtube.com/watch?v=7vz6b_Ohdl0",
+      "chunksCount": 23,
+      "transcriptLength": 17109,
+      "scrapedAt": "2026-03-18T12:00:25.746Z",
+      "status": "success"
+    },
+    "v-uhjlMg9L0": {
+      "videoId": "v-uhjlMg9L0",
+      "videoTitle": "I sold my company",
+      "videoUrl": "https://www.youtube.com/watch?v=v-uhjlMg9L0",
+      "chunksCount": 11,
+      "transcriptLength": 8409,
+      "scrapedAt": "2026-03-18T12:00:28.817Z",
+      "status": "success"
+    },
+    "W48emwbUlUE": {
+      "videoId": "W48emwbUlUE",
+      "videoTitle": "How I Built a $12K/Month Micro-SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=W48emwbUlUE",
+      "chunksCount": 28,
+      "transcriptLength": 20970,
+      "scrapedAt": "2026-03-18T12:00:28.840Z",
+      "status": "success"
+    },
+    "9sJ2R0rM3CA": {
+      "videoId": "9sJ2R0rM3CA",
+      "videoTitle": "I Make $150K/Month From 20 Tiny Apps",
+      "videoUrl": "https://www.youtube.com/watch?v=9sJ2R0rM3CA",
+      "chunksCount": 24,
+      "transcriptLength": 18382,
+      "scrapedAt": "2026-03-18T12:00:28.872Z",
+      "status": "success"
+    },
+    "hYF4fQYlrso": {
+      "videoId": "hYF4fQYlrso",
+      "videoTitle": "I Make $16K/Month... Even In A \"Tiny\" Niche",
+      "videoUrl": "https://www.youtube.com/watch?v=hYF4fQYlrso",
+      "chunksCount": 26,
+      "transcriptLength": 19714,
+      "scrapedAt": "2026-03-18T12:00:29.804Z",
+      "status": "success"
+    },
+    "47QXbPGyzBI": {
+      "videoId": "47QXbPGyzBI",
+      "videoTitle": "I Made $500K From 8 Different Income Streams",
+      "videoUrl": "https://www.youtube.com/watch?v=47QXbPGyzBI",
+      "chunksCount": 24,
+      "transcriptLength": 17796,
+      "scrapedAt": "2026-03-18T12:00:29.927Z",
+      "status": "success"
+    },
+    "RPM4ImzcIFc": {
+      "videoId": "RPM4ImzcIFc",
+      "videoTitle": "How I Built It: $17K/Month Open Source SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=RPM4ImzcIFc",
+      "chunksCount": 34,
+      "transcriptLength": 25727,
+      "scrapedAt": "2026-03-18T12:00:29.844Z",
+      "status": "success"
+    },
+    "pvjalHFNM9Q": {
+      "videoId": "pvjalHFNM9Q",
+      "videoTitle": "How I Used Reddit to Build a $34K/Month SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=pvjalHFNM9Q",
+      "chunksCount": 24,
+      "transcriptLength": 18371,
+      "scrapedAt": "2026-03-18T12:00:30.864Z",
+      "status": "success"
+    },
+    "R4BS_UiTBPw": {
+      "videoId": "R4BS_UiTBPw",
+      "videoTitle": "How I Built a $13K/Month SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=R4BS_UiTBPw",
+      "chunksCount": 39,
+      "transcriptLength": 28852,
+      "scrapedAt": "2026-03-18T12:00:30.962Z",
+      "status": "success"
+    },
+    "yBjcmMhXSDk": {
+      "videoId": "yBjcmMhXSDk",
+      "videoTitle": "I Built a $20K/Month Mobile App: Here’s My Entire Playbook",
+      "videoUrl": "https://www.youtube.com/watch?v=yBjcmMhXSDk",
+      "chunksCount": 26,
+      "transcriptLength": 19793,
+      "scrapedAt": "2026-03-18T12:00:30.982Z",
+      "status": "success"
+    },
+    "9r0qPeSJGog": {
+      "videoId": "9r0qPeSJGog",
+      "videoTitle": "I built a $14K/month SaaS using Discord",
+      "videoUrl": "https://www.youtube.com/watch?v=9r0qPeSJGog",
+      "chunksCount": 24,
+      "transcriptLength": 17695,
+      "scrapedAt": "2026-03-18T12:00:31.826Z",
+      "status": "success"
+    },
+    "XifgHi9R5Rc": {
+      "videoId": "XifgHi9R5Rc",
+      "videoTitle": "How My App Hit $60K/Month in 2 Months",
+      "videoUrl": "https://www.youtube.com/watch?v=XifgHi9R5Rc",
+      "chunksCount": 30,
+      "transcriptLength": 22864,
+      "scrapedAt": "2026-03-18T12:00:31.869Z",
+      "status": "success"
+    },
+    "Adl5_lJfkEE": {
+      "videoId": "Adl5_lJfkEE",
+      "videoTitle": "How I Grew My App to $13K/month (Even Though I Hate Marketing)",
+      "videoUrl": "https://www.youtube.com/watch?v=Adl5_lJfkEE",
+      "chunksCount": 21,
+      "transcriptLength": 15631,
+      "scrapedAt": "2026-03-18T12:00:31.889Z",
+      "status": "success"
+    },
+    "FCGpgPZqmkY": {
+      "videoId": "FCGpgPZqmkY",
+      "videoTitle": "How I built my first SaaS without an audience ($25K/month)",
+      "videoUrl": "https://www.youtube.com/watch?v=FCGpgPZqmkY",
+      "chunksCount": 22,
+      "transcriptLength": 16694,
+      "scrapedAt": "2026-03-18T12:00:32.735Z",
+      "status": "success"
+    },
+    "VYT-ip21P08": {
+      "videoId": "VYT-ip21P08",
+      "videoTitle": "How I Used Twitter to Hit $10K/Month",
+      "videoUrl": "https://www.youtube.com/watch?v=VYT-ip21P08",
+      "chunksCount": 34,
+      "transcriptLength": 25295,
+      "scrapedAt": "2026-03-18T12:00:32.976Z",
+      "status": "success"
+    },
+    "ST2ROUFbdvU": {
+      "videoId": "ST2ROUFbdvU",
+      "videoTitle": "How We Grew Our App to $30K/Month",
+      "videoUrl": "https://www.youtube.com/watch?v=ST2ROUFbdvU",
+      "chunksCount": 22,
+      "transcriptLength": 16358,
+      "scrapedAt": "2026-03-18T12:00:33.013Z",
+      "status": "success"
+    },
+    "LYdJ3dfNCVs": {
+      "videoId": "LYdJ3dfNCVs",
+      "videoTitle": "My mobile app made $800K in 365 days",
+      "videoUrl": "https://www.youtube.com/watch?v=LYdJ3dfNCVs",
+      "chunksCount": 20,
+      "transcriptLength": 15117,
+      "scrapedAt": "2026-03-18T12:00:33.930Z",
+      "status": "success"
+    },
+    "8kM-JcKpcDs": {
+      "videoId": "8kM-JcKpcDs",
+      "videoTitle": "How I grew my mobile app to $17K per month",
+      "videoUrl": "https://www.youtube.com/watch?v=8kM-JcKpcDs",
+      "chunksCount": 34,
+      "transcriptLength": 25438,
+      "scrapedAt": "2026-03-18T12:00:33.979Z",
+      "status": "success"
+    },
+    "vw2Yc4Y1PsU": {
+      "videoId": "vw2Yc4Y1PsU",
+      "videoTitle": "I make $10K/month from 28 apps",
+      "videoUrl": "https://www.youtube.com/watch?v=vw2Yc4Y1PsU",
+      "chunksCount": 20,
+      "transcriptLength": 15274,
+      "scrapedAt": "2026-03-18T12:00:33.884Z",
+      "status": "success"
+    },
+    "k2jecxFu2as": {
+      "videoId": "k2jecxFu2as",
+      "videoTitle": "I shipped my app in 12 hours and now it makes $15K/month",
+      "videoUrl": "https://www.youtube.com/watch?v=k2jecxFu2as",
+      "chunksCount": 21,
+      "transcriptLength": 15623,
+      "scrapedAt": "2026-03-18T12:00:34.889Z",
+      "status": "success"
+    },
+    "xeUhKuJbeWQ": {
+      "videoId": "xeUhKuJbeWQ",
+      "videoTitle": "I Built 4 SaaS Apps to $100K MRR: Here's My Exact Playbook",
+      "videoUrl": "https://www.youtube.com/watch?v=xeUhKuJbeWQ",
+      "chunksCount": 25,
+      "transcriptLength": 18591,
+      "scrapedAt": "2026-03-18T12:00:34.856Z",
+      "status": "success"
+    },
+    "SJOFUBNHYqU": {
+      "videoId": "SJOFUBNHYqU",
+      "videoTitle": "I make $120K/year from 3 mobile apps",
+      "videoUrl": "https://www.youtube.com/watch?v=SJOFUBNHYqU",
+      "chunksCount": 23,
+      "transcriptLength": 17411,
+      "scrapedAt": "2026-03-18T12:00:34.868Z",
+      "status": "success"
+    },
+    "7KqlwjBM_tM": {
+      "videoId": "7KqlwjBM_tM",
+      "videoTitle": "How I Built It: $30K/month Micro-SaaS (Subscribr Breakdown)",
+      "videoUrl": "https://www.youtube.com/watch?v=7KqlwjBM_tM",
+      "chunksCount": 23,
+      "transcriptLength": 17591,
+      "scrapedAt": "2026-03-18T12:00:35.839Z",
+      "status": "success"
+    },
+    "-OPKa8DIzKU": {
+      "videoId": "-OPKa8DIzKU",
+      "videoTitle": "My Apps Failed Until I Discovered This Playbook ($35K/month apps)",
+      "videoUrl": "https://www.youtube.com/watch?v=-OPKa8DIzKU",
+      "chunksCount": 21,
+      "transcriptLength": 15987,
+      "scrapedAt": "2026-03-18T12:00:35.916Z",
+      "status": "success"
+    },
+    "wvYej-2KWDg": {
+      "videoId": "wvYej-2KWDg",
+      "videoTitle": "How he makes $250K per month from a simple app (Letterly Breakdown)",
+      "videoUrl": "https://www.youtube.com/watch?v=wvYej-2KWDg",
+      "chunksCount": 19,
+      "transcriptLength": 13869,
+      "scrapedAt": "2026-03-18T12:00:35.863Z",
+      "status": "success"
+    },
+    "LWPN-PAhtLA": {
+      "videoId": "LWPN-PAhtLA",
+      "videoTitle": "My website makes $35K/month (built in 3 hours)",
+      "videoUrl": "https://www.youtube.com/watch?v=LWPN-PAhtLA",
+      "chunksCount": 22,
+      "transcriptLength": 16488,
+      "scrapedAt": "2026-03-18T12:00:36.797Z",
+      "status": "success"
+    },
+    "rCV-TVCnF6Q": {
+      "videoId": "rCV-TVCnF6Q",
+      "videoTitle": "How We Built It: $30K/month Mobile App",
+      "videoUrl": "https://www.youtube.com/watch?v=rCV-TVCnF6Q",
+      "chunksCount": 16,
+      "transcriptLength": 12106,
+      "scrapedAt": "2026-03-18T12:00:36.854Z",
+      "status": "success"
+    },
+    "nsn94Ad47GY": {
+      "videoId": "nsn94Ad47GY",
+      "videoTitle": "Our Mobile App Made $85K in 8 months",
+      "videoUrl": "https://www.youtube.com/watch?v=nsn94Ad47GY",
+      "chunksCount": 18,
+      "transcriptLength": 13148,
+      "scrapedAt": "2026-03-18T12:00:36.883Z",
+      "status": "success"
+    },
+    "2dfMUtHlQik": {
+      "videoId": "2dfMUtHlQik",
+      "videoTitle": "How I Built It: $400K/Month Mobile App (Gravl)",
+      "videoUrl": "https://www.youtube.com/watch?v=2dfMUtHlQik",
+      "chunksCount": 21,
+      "transcriptLength": 15743,
+      "scrapedAt": "2026-03-18T12:00:37.730Z",
+      "status": "success"
+    },
+    "PmyXmpkTIdc": {
+      "videoId": "PmyXmpkTIdc",
+      "videoTitle": "I flipped 4 apps and made $500,000",
+      "videoUrl": "https://www.youtube.com/watch?v=PmyXmpkTIdc",
+      "chunksCount": 27,
+      "transcriptLength": 20603,
+      "scrapedAt": "2026-03-18T12:00:37.808Z",
+      "status": "success"
+    },
+    "67zh8_yiPh4": {
+      "videoId": "67zh8_yiPh4",
+      "videoTitle": "I Built 3 SaaS Apps to $200K MRR: Here's My Exact Playbook",
+      "videoUrl": "https://www.youtube.com/watch?v=67zh8_yiPh4",
+      "chunksCount": 20,
+      "transcriptLength": 15122,
+      "scrapedAt": "2026-03-18T12:00:37.845Z",
+      "status": "success"
+    },
+    "CwHD6Fg-Mjs": {
+      "videoId": "CwHD6Fg-Mjs",
+      "videoTitle": "I vibe coded a $20K/month mobile app in 14 days",
+      "videoUrl": "https://www.youtube.com/watch?v=CwHD6Fg-Mjs",
+      "chunksCount": 24,
+      "transcriptLength": 17843,
+      "scrapedAt": "2026-03-18T12:00:38.743Z",
+      "status": "success"
+    },
+    "orYTlk_BhW8": {
+      "videoId": "orYTlk_BhW8",
+      "videoTitle": "I vibe coded a $12K/month mobile app (Stoppr Breakdown)",
+      "videoUrl": "https://www.youtube.com/watch?v=orYTlk_BhW8",
+      "chunksCount": 15,
+      "transcriptLength": 11469,
+      "scrapedAt": "2026-03-18T12:00:38.748Z",
+      "status": "success"
+    },
+    "9WWvLj-NqEE": {
+      "videoId": "9WWvLj-NqEE",
+      "videoTitle": "My 2 apps made $1.5M",
+      "videoUrl": "https://www.youtube.com/watch?v=9WWvLj-NqEE",
+      "chunksCount": 25,
+      "transcriptLength": 18656,
+      "scrapedAt": "2026-03-18T12:00:38.857Z",
+      "status": "success"
+    },
+    "T5zMsTw8GWQ": {
+      "videoId": "T5zMsTw8GWQ",
+      "videoTitle": "How I built a $30K/month mobile app",
+      "videoUrl": "https://www.youtube.com/watch?v=T5zMsTw8GWQ",
+      "chunksCount": 22,
+      "transcriptLength": 16070,
+      "scrapedAt": "2026-03-18T12:00:39.891Z",
+      "status": "success"
+    },
+    "4BsxnGRbF4k": {
+      "videoId": "4BsxnGRbF4k",
+      "videoTitle": "I Found a Business for Sale and Rebuilt It Into $20K/Month",
+      "videoUrl": "https://www.youtube.com/watch?v=4BsxnGRbF4k",
+      "chunksCount": 19,
+      "transcriptLength": 14427,
+      "scrapedAt": "2026-03-18T12:00:39.893Z",
+      "status": "success"
+    },
+    "plrni3IBEyI": {
+      "videoId": "plrni3IBEyI",
+      "videoTitle": "I made $1M flipping apps",
+      "videoUrl": "https://www.youtube.com/watch?v=plrni3IBEyI",
+      "chunksCount": 15,
+      "transcriptLength": 11210,
+      "scrapedAt": "2026-03-18T12:00:40.202Z",
+      "status": "success"
+    },
+    "DV7bBCAABg4": {
+      "videoId": "DV7bBCAABg4",
+      "videoTitle": "I built a $100K/month AI app",
+      "videoUrl": "https://www.youtube.com/watch?v=DV7bBCAABg4",
+      "chunksCount": 16,
+      "transcriptLength": 12301,
+      "scrapedAt": "2026-03-18T12:00:41.111Z",
+      "status": "success"
+    },
+    "88BbTpbWVpY": {
+      "videoId": "88BbTpbWVpY",
+      "videoTitle": "I rebuilt a $1B app and now make $14K/month",
+      "videoUrl": "https://www.youtube.com/watch?v=88BbTpbWVpY",
+      "chunksCount": 22,
+      "transcriptLength": 16442,
+      "scrapedAt": "2026-03-18T12:00:41.235Z",
+      "status": "success"
+    },
+    "YtyJ4reSQY0": {
+      "videoId": "YtyJ4reSQY0",
+      "videoTitle": "Teen From Kazakhstan Makes $1M/Year Online",
+      "videoUrl": "https://www.youtube.com/watch?v=YtyJ4reSQY0",
+      "chunksCount": 15,
+      "transcriptLength": 10858,
+      "scrapedAt": "2026-03-18T12:00:43.133Z",
+      "status": "success"
+    },
+    "w8oUlfgvcTI": {
+      "videoId": "w8oUlfgvcTI",
+      "videoTitle": "My two apps made $30M",
+      "videoUrl": "https://www.youtube.com/watch?v=w8oUlfgvcTI",
+      "chunksCount": 20,
+      "transcriptLength": 14754,
+      "scrapedAt": "2026-03-18T12:00:44.015Z",
+      "status": "success"
+    },
+    "VZ1XspToV1E": {
+      "videoId": "VZ1XspToV1E",
+      "videoTitle": "I Built a $1M SaaS Using YouTube",
+      "videoUrl": "https://www.youtube.com/watch?v=VZ1XspToV1E",
+      "chunksCount": 20,
+      "transcriptLength": 14858,
+      "scrapedAt": "2026-03-18T12:00:44.271Z",
+      "status": "success"
+    },
+    "hYW9YDwHE20": {
+      "videoId": "hYW9YDwHE20",
+      "videoTitle": "My app failed, then I changed one thing, and made $80K",
+      "videoUrl": "https://www.youtube.com/watch?v=hYW9YDwHE20",
+      "chunksCount": 20,
+      "transcriptLength": 14501,
+      "scrapedAt": "2026-03-18T12:00:44.329Z",
+      "status": "success"
+    },
+    "w3zxMrwWrt0": {
+      "videoId": "w3zxMrwWrt0",
+      "videoTitle": "This app replaced my 9-5 ($150K/year)",
+      "videoUrl": "https://www.youtube.com/watch?v=w3zxMrwWrt0",
+      "chunksCount": 19,
+      "transcriptLength": 14316,
+      "scrapedAt": "2026-03-18T12:00:45.204Z",
+      "status": "success"
+    },
+    "3eY71OS4MFw": {
+      "videoId": "3eY71OS4MFw",
+      "videoTitle": "How We Built a $10K/mo SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=3eY71OS4MFw",
+      "chunksCount": 20,
+      "transcriptLength": 14721,
+      "scrapedAt": "2026-03-18T12:00:45.261Z",
+      "status": "success"
+    },
+    "hKqLceTPLWM": {
+      "videoId": "hKqLceTPLWM",
+      "videoTitle": "The $1M Mobile App Playbook",
+      "videoUrl": "https://www.youtube.com/watch?v=hKqLceTPLWM",
+      "chunksCount": 40,
+      "transcriptLength": 29368,
+      "scrapedAt": "2026-03-18T12:00:45.277Z",
+      "status": "success"
+    },
+    "a1EXyJlSx9g": {
+      "videoId": "a1EXyJlSx9g",
+      "videoTitle": "My app makes $41K/month",
+      "videoUrl": "https://www.youtube.com/watch?v=a1EXyJlSx9g",
+      "chunksCount": 17,
+      "transcriptLength": 12868,
+      "scrapedAt": "2026-03-18T12:00:46.137Z",
+      "status": "success"
+    },
+    "laRliIVNZgU": {
+      "videoId": "laRliIVNZgU",
+      "videoTitle": "I Quit YouTube & Built a $1M App (Without My Audience)",
+      "videoUrl": "https://www.youtube.com/watch?v=laRliIVNZgU",
+      "chunksCount": 25,
+      "transcriptLength": 18540,
+      "scrapedAt": "2026-03-18T12:00:46.171Z",
+      "status": "success"
+    },
+    "BNr1JOQdSN0": {
+      "videoId": "BNr1JOQdSN0",
+      "videoTitle": "How I Made $65K in 3 Days",
+      "videoUrl": "https://www.youtube.com/watch?v=BNr1JOQdSN0",
+      "chunksCount": 24,
+      "transcriptLength": 17765,
+      "scrapedAt": "2026-03-18T12:00:46.211Z",
+      "status": "success"
+    },
+    "1nfPvJKrYYQ": {
+      "videoId": "1nfPvJKrYYQ",
+      "videoTitle": "Our simple app made $100K in 90 days",
+      "videoUrl": "https://www.youtube.com/watch?v=1nfPvJKrYYQ",
+      "chunksCount": 14,
+      "transcriptLength": 10597,
+      "scrapedAt": "2026-03-18T12:00:47.084Z",
+      "status": "success"
+    },
+    "MLAH5OZ5FO8": {
+      "videoId": "MLAH5OZ5FO8",
+      "videoTitle": "How I Built a $4M Business (Simple Strategy)",
+      "videoUrl": "https://www.youtube.com/watch?v=MLAH5OZ5FO8",
+      "chunksCount": 19,
+      "transcriptLength": 14220,
+      "scrapedAt": "2026-03-18T12:00:47.092Z",
+      "status": "success"
+    },
+    "VfNRd5Rk0cM": {
+      "videoId": "VfNRd5Rk0cM",
+      "videoTitle": "This app made over $1M",
+      "videoUrl": "https://www.youtube.com/watch?v=VfNRd5Rk0cM",
+      "chunksCount": 23,
+      "transcriptLength": 17146,
+      "scrapedAt": "2026-03-18T12:00:47.095Z",
+      "status": "success"
+    },
+    "rPguT9z6kRQ": {
+      "videoId": "rPguT9z6kRQ",
+      "videoTitle": "How I Finally Built a $10K/Month SaaS (30 Failures)",
+      "videoUrl": "https://www.youtube.com/watch?v=rPguT9z6kRQ",
+      "chunksCount": 16,
+      "transcriptLength": 12275,
+      "scrapedAt": "2026-03-18T12:00:47.966Z",
+      "status": "success"
+    },
+    "F8i0kkrQ8_o": {
+      "videoId": "F8i0kkrQ8_o",
+      "videoTitle": "How We Built It: $900K Open Source SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=F8i0kkrQ8_o",
+      "chunksCount": 20,
+      "transcriptLength": 14858,
+      "scrapedAt": "2026-03-18T12:00:48.089Z",
+      "status": "success"
+    },
+    "NvtsM8Nk72c": {
+      "videoId": "NvtsM8Nk72c",
+      "videoTitle": "How I Built It: $23K/month micro-saas",
+      "videoUrl": "https://www.youtube.com/watch?v=NvtsM8Nk72c",
+      "chunksCount": 18,
+      "transcriptLength": 13588,
+      "scrapedAt": "2026-03-18T12:00:48.090Z",
+      "status": "success"
+    },
+    "3X4VneEHvig": {
+      "videoId": "3X4VneEHvig",
+      "videoTitle": "How I Used Reddit To Build a $25K/Month Business",
+      "videoUrl": "https://www.youtube.com/watch?v=3X4VneEHvig",
+      "chunksCount": 21,
+      "transcriptLength": 15715,
+      "scrapedAt": "2026-03-18T12:00:48.976Z",
+      "status": "success"
+    },
+    "_KaFS4Dxs5k": {
+      "videoId": "_KaFS4Dxs5k",
+      "videoTitle": "How I Built a $10K/Month SaaS (Beginner Strategy)",
+      "videoUrl": "https://www.youtube.com/watch?v=_KaFS4Dxs5k",
+      "chunksCount": 15,
+      "transcriptLength": 11417,
+      "scrapedAt": "2026-03-18T12:00:49.004Z",
+      "status": "success"
+    },
+    "miEUhwSR2-0": {
+      "videoId": "miEUhwSR2-0",
+      "videoTitle": "My AI App Makes $100K/Month",
+      "videoUrl": "https://www.youtube.com/watch?v=miEUhwSR2-0",
+      "chunksCount": 19,
+      "transcriptLength": 14402,
+      "scrapedAt": "2026-03-18T12:00:49.358Z",
+      "status": "success"
+    },
+    "EF3uyvHHBfM": {
+      "videoId": "EF3uyvHHBfM",
+      "videoTitle": "I make $40K/month with this one website",
+      "videoUrl": "https://www.youtube.com/watch?v=EF3uyvHHBfM",
+      "chunksCount": 19,
+      "transcriptLength": 14108,
+      "scrapedAt": "2026-03-18T12:00:50.243Z",
+      "status": "success"
+    },
+    "8BtHk-oNlN0": {
+      "videoId": "8BtHk-oNlN0",
+      "videoTitle": "I cloned 3 apps and now make $35K/month",
+      "videoUrl": "https://www.youtube.com/watch?v=8BtHk-oNlN0",
+      "chunksCount": 19,
+      "transcriptLength": 14239,
+      "scrapedAt": "2026-03-18T12:00:50.260Z",
+      "status": "success"
+    },
+    "ZGwQoRw7mh8": {
+      "videoId": "ZGwQoRw7mh8",
+      "videoTitle": "My Side Project Makes $15K/Month (Quit My 9-5)",
+      "videoUrl": "https://www.youtube.com/watch?v=ZGwQoRw7mh8",
+      "chunksCount": 23,
+      "transcriptLength": 17336,
+      "scrapedAt": "2026-03-18T12:00:50.271Z",
+      "status": "success"
+    },
+    "BaWUPamqWlA": {
+      "videoId": "BaWUPamqWlA",
+      "videoTitle": "How I Used Reddit to Hit $17K MRR (With ZERO Audience)",
+      "videoUrl": "https://www.youtube.com/watch?v=BaWUPamqWlA",
+      "chunksCount": 18,
+      "transcriptLength": 13259,
+      "scrapedAt": "2026-03-18T12:00:51.186Z",
+      "status": "success"
+    },
+    "HBCwzfFbopE": {
+      "videoId": "HBCwzfFbopE",
+      "videoTitle": "This App Makes $25,000/Month",
+      "videoUrl": "https://www.youtube.com/watch?v=HBCwzfFbopE",
+      "chunksCount": 21,
+      "transcriptLength": 15839,
+      "scrapedAt": "2026-03-18T12:00:51.204Z",
+      "status": "success"
+    },
+    "E_sPvPHwpuk": {
+      "videoId": "E_sPvPHwpuk",
+      "videoTitle": "How I Built A $1M Business in 117 Days",
+      "videoUrl": "https://www.youtube.com/watch?v=E_sPvPHwpuk",
+      "chunksCount": 19,
+      "transcriptLength": 14190,
+      "scrapedAt": "2026-03-18T12:01:01.167Z",
+      "status": "success"
+    },
+    "gpn1jEoWT4A": {
+      "videoId": "gpn1jEoWT4A",
+      "videoTitle": "How I Built It: $15K/month Mobile App",
+      "videoUrl": "https://www.youtube.com/watch?v=gpn1jEoWT4A",
+      "chunksCount": 16,
+      "transcriptLength": 12255,
+      "scrapedAt": "2026-03-18T12:01:02.123Z",
+      "status": "success"
+    },
+    "CoqAxV6b6j4": {
+      "videoId": "CoqAxV6b6j4",
+      "videoTitle": "I Make $100K/Year From 2 AI Side Projects",
+      "videoUrl": "https://www.youtube.com/watch?v=CoqAxV6b6j4",
+      "chunksCount": 17,
+      "transcriptLength": 12825,
+      "scrapedAt": "2026-03-18T12:01:02.141Z",
+      "status": "success"
+    },
+    "x9TUDb4sLE0": {
+      "videoId": "x9TUDb4sLE0",
+      "videoTitle": "I Built a $1M SaaS 100% with No Code (Bubble)",
+      "videoUrl": "https://www.youtube.com/watch?v=x9TUDb4sLE0",
+      "chunksCount": 22,
+      "transcriptLength": 16109,
+      "scrapedAt": "2026-03-18T12:01:05.475Z",
+      "status": "success"
+    },
+    "L_FY6aW9cJ4": {
+      "videoId": "L_FY6aW9cJ4",
+      "videoTitle": "How to Use AI to Find a $1M Idea [Reddit, Claude]",
+      "videoUrl": "https://www.youtube.com/watch?v=L_FY6aW9cJ4",
+      "chunksCount": 29,
+      "transcriptLength": 21445,
+      "scrapedAt": "2026-03-18T12:01:06.374Z",
+      "status": "success"
+    },
+    "4hMg_CZauJs": {
+      "videoId": "4hMg_CZauJs",
+      "videoTitle": "I Built an App with Cursor and Made $100K on Launch Day",
+      "videoUrl": "https://www.youtube.com/watch?v=4hMg_CZauJs",
+      "chunksCount": 20,
+      "transcriptLength": 14965,
+      "scrapedAt": "2026-03-18T12:01:06.434Z",
+      "status": "success"
+    },
+    "npcL7oRZQlI": {
+      "videoId": "npcL7oRZQlI",
+      "videoTitle": "How I Built It: $9K/Month Micro-SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=npcL7oRZQlI",
+      "chunksCount": 23,
+      "transcriptLength": 17098,
+      "scrapedAt": "2026-03-18T12:01:06.548Z",
+      "status": "success"
+    },
+    "0T55DRYqeeA": {
+      "videoId": "0T55DRYqeeA",
+      "videoTitle": "From Zero to $42K/Month in 90 Days with AI",
+      "videoUrl": "https://www.youtube.com/watch?v=0T55DRYqeeA",
+      "chunksCount": 25,
+      "transcriptLength": 18701,
+      "scrapedAt": "2026-03-18T12:01:07.434Z",
+      "status": "success"
+    },
+    "En34iY-rQc0": {
+      "videoId": "En34iY-rQc0",
+      "videoTitle": "I Make $250K/Month From 20 Apps",
+      "videoUrl": "https://www.youtube.com/watch?v=En34iY-rQc0",
+      "chunksCount": 24,
+      "transcriptLength": 18362,
+      "scrapedAt": "2026-03-18T12:01:07.548Z",
+      "status": "success"
+    },
+    "jpSY4MlWX50": {
+      "videoId": "jpSY4MlWX50",
+      "videoTitle": "I Built an App with Cursor, Made $30K, and Quit My Job.",
+      "videoUrl": "https://www.youtube.com/watch?v=jpSY4MlWX50",
+      "chunksCount": 21,
+      "transcriptLength": 15456,
+      "scrapedAt": "2026-03-18T12:01:07.714Z",
+      "status": "success"
+    },
+    "PSx0vcUY-sk": {
+      "videoId": "PSx0vcUY-sk",
+      "videoTitle": "I Got Rejected From YC, Then Built a $200M Startup",
+      "videoUrl": "https://www.youtube.com/watch?v=PSx0vcUY-sk",
+      "chunksCount": 20,
+      "transcriptLength": 14986,
+      "scrapedAt": "2026-03-18T12:01:08.644Z",
+      "status": "success"
+    },
+    "8xgnm6SynH4": {
+      "videoId": "8xgnm6SynH4",
+      "videoTitle": "I Spent 24 Hours With Roblox Millionaires",
+      "videoUrl": "https://www.youtube.com/watch?v=8xgnm6SynH4",
+      "chunksCount": 32,
+      "transcriptLength": 23823,
+      "scrapedAt": "2026-03-18T12:01:08.659Z",
+      "status": "success"
+    },
+    "tMkpiFIW8Xg": {
+      "videoId": "tMkpiFIW8Xg",
+      "videoTitle": "My Coding Game Makes $1M Per Month",
+      "videoUrl": "https://www.youtube.com/watch?v=tMkpiFIW8Xg",
+      "chunksCount": 26,
+      "transcriptLength": 19379,
+      "scrapedAt": "2026-03-18T12:01:11.871Z",
+      "status": "success"
+    },
+    "vLLBzUZr6-s": {
+      "videoId": "vLLBzUZr6-s",
+      "videoTitle": "My Apps Make $4.5M/Year With $0 Marketing",
+      "videoUrl": "https://www.youtube.com/watch?v=vLLBzUZr6-s",
+      "chunksCount": 23,
+      "transcriptLength": 17094,
+      "scrapedAt": "2026-03-18T12:01:12.725Z",
+      "status": "success"
+    },
+    "zPijWd9uk-I": {
+      "videoId": "zPijWd9uk-I",
+      "videoTitle": "I Locked Myself In A Room, Made 17 Apps, & Sold 2 for $265,000",
+      "videoUrl": "https://www.youtube.com/watch?v=zPijWd9uk-I",
+      "chunksCount": 23,
+      "transcriptLength": 17427,
+      "scrapedAt": "2026-03-18T12:01:12.789Z",
+      "status": "success"
+    },
+    "KpVPST_P4W8": {
+      "videoId": "KpVPST_P4W8",
+      "videoTitle": "I Make $60K/Month with 4 Apps",
+      "videoUrl": "https://www.youtube.com/watch?v=KpVPST_P4W8",
+      "chunksCount": 24,
+      "transcriptLength": 17724,
+      "scrapedAt": "2026-03-18T12:01:12.824Z",
+      "status": "success"
+    },
+    "KcCnqLBhvXY": {
+      "videoId": "KcCnqLBhvXY",
+      "videoTitle": "The $10M AI SaaS Playbook",
+      "videoUrl": "https://www.youtube.com/watch?v=KcCnqLBhvXY",
+      "chunksCount": 47,
+      "transcriptLength": 35271,
+      "scrapedAt": "2026-03-18T12:01:13.744Z",
+      "status": "success"
+    },
+    "gU9FtZIfb_M": {
+      "videoId": "gU9FtZIfb_M",
+      "videoTitle": "I Quit My Job & Accidentally Built A $10M Business",
+      "videoUrl": "https://www.youtube.com/watch?v=gU9FtZIfb_M",
+      "chunksCount": 30,
+      "transcriptLength": 22364,
+      "scrapedAt": "2026-03-18T12:01:13.751Z",
+      "status": "success"
+    },
+    "qeY283nBhIA": {
+      "videoId": "qeY283nBhIA",
+      "videoTitle": "I Built a $10K/Month App from My Mom’s Basement",
+      "videoUrl": "https://www.youtube.com/watch?v=qeY283nBhIA",
+      "chunksCount": 27,
+      "transcriptLength": 19848,
+      "scrapedAt": "2026-03-18T12:01:13.924Z",
+      "status": "success"
+    },
+    "h9R6ZeNruuI": {
+      "videoId": "h9R6ZeNruuI",
+      "videoTitle": "The Underdog: From $200K in Debt to $1M App Maker",
+      "videoUrl": "https://www.youtube.com/watch?v=h9R6ZeNruuI",
+      "chunksCount": 22,
+      "transcriptLength": 16736,
+      "scrapedAt": "2026-03-18T12:01:14.795Z",
+      "status": "success"
+    },
+    "BeRKQkU5Ceo": {
+      "videoId": "BeRKQkU5Ceo",
+      "videoTitle": "The Underdog: From Life Changing Accident to $100M/Year",
+      "videoUrl": "https://www.youtube.com/watch?v=BeRKQkU5Ceo",
+      "chunksCount": 22,
+      "transcriptLength": 16466,
+      "scrapedAt": "2026-03-18T12:01:14.805Z",
+      "status": "success"
+    },
+    "yue9in5oh64": {
+      "videoId": "yue9in5oh64",
+      "videoTitle": "How I Built It: $20K/Month AI App as a Non-Technical Founder",
+      "videoUrl": "https://www.youtube.com/watch?v=yue9in5oh64",
+      "chunksCount": 21,
+      "transcriptLength": 15286,
+      "scrapedAt": "2026-03-18T12:01:14.970Z",
+      "status": "success"
+    },
+    "ZEIPj7QbZeI": {
+      "videoId": "ZEIPj7QbZeI",
+      "videoTitle": "The Underdog: He Turned His Last $1,000 Into $150M",
+      "videoUrl": "https://www.youtube.com/watch?v=ZEIPj7QbZeI",
+      "chunksCount": 28,
+      "transcriptLength": 20611,
+      "scrapedAt": "2026-03-18T12:01:15.945Z",
+      "status": "success"
+    },
+    "G4nsGvL4Fo0": {
+      "videoId": "G4nsGvL4Fo0",
+      "videoTitle": "I Make $15K/Month With 2 AI Apps",
+      "videoUrl": "https://www.youtube.com/watch?v=G4nsGvL4Fo0",
+      "chunksCount": 22,
+      "transcriptLength": 16590,
+      "scrapedAt": "2026-03-18T12:01:15.953Z",
+      "status": "success"
+    },
+    "5u9u8yzPEpA": {
+      "videoId": "5u9u8yzPEpA",
+      "videoTitle": "He Made $10M with 3 iPhone Apps",
+      "videoUrl": "https://www.youtube.com/watch?v=5u9u8yzPEpA",
+      "chunksCount": 27,
+      "transcriptLength": 20114,
+      "scrapedAt": "2026-03-18T12:01:16.170Z",
+      "status": "success"
+    },
+    "WuzxmeUP6ro": {
+      "videoId": "WuzxmeUP6ro",
+      "videoTitle": "How I Built It: $37K/Month Notion App",
+      "videoUrl": "https://www.youtube.com/watch?v=WuzxmeUP6ro",
+      "chunksCount": 26,
+      "transcriptLength": 19096,
+      "scrapedAt": "2026-03-18T12:01:17.182Z",
+      "status": "success"
+    },
+    "xZDofUHbZHA": {
+      "videoId": "xZDofUHbZHA",
+      "videoTitle": "The day I hit reset on my life",
+      "videoUrl": "https://www.youtube.com/watch?v=xZDofUHbZHA",
+      "chunksCount": 12,
+      "transcriptLength": 8866,
+      "scrapedAt": "2026-03-18T12:01:17.210Z",
+      "status": "success"
+    },
+    "TCGXT7ySco8": {
+      "videoId": "TCGXT7ySco8",
+      "videoTitle": "How I Built It: $12K/Month Micro SaaS",
+      "videoUrl": "https://www.youtube.com/watch?v=TCGXT7ySco8",
+      "chunksCount": 20,
+      "transcriptLength": 15162,
+      "scrapedAt": "2026-03-18T12:01:17.301Z",
+      "status": "success"
+    },
+    "GFnBp8lMIf4": {
+      "videoId": "GFnBp8lMIf4",
+      "videoTitle": "9 Things That Make Me $1.8M/Year",
+      "videoUrl": "https://www.youtube.com/watch?v=GFnBp8lMIf4",
+      "chunksCount": 16,
+      "transcriptLength": 11945,
+      "scrapedAt": "2026-03-18T12:01:18.231Z",
+      "status": "success"
+    },
+    "mjCa8IFjM2E": {
+      "videoId": "mjCa8IFjM2E",
+      "videoTitle": "How I Built It: $10K/Month AI Image Generator",
+      "videoUrl": "https://www.youtube.com/watch?v=mjCa8IFjM2E",
+      "chunksCount": 18,
+      "transcriptLength": 13215,
+      "scrapedAt": "2026-03-18T12:01:18.247Z",
+      "status": "success"
+    },
+    "loXc0Tyi4R4": {
+      "videoId": "loXc0Tyi4R4",
+      "videoTitle": "How I Built It: $40K/Month iPhone App",
+      "videoUrl": "https://www.youtube.com/watch?v=loXc0Tyi4R4",
+      "chunksCount": 26,
+      "transcriptLength": 19234,
+      "scrapedAt": "2026-03-18T12:01:28.461Z",
+      "status": "success"
+    },
+    "ty9ZcimL6VE": {
+      "videoId": "ty9ZcimL6VE",
+      "videoTitle": "How I Built It: $20K/Month Chrome Extension",
+      "videoUrl": "https://www.youtube.com/watch?v=ty9ZcimL6VE",
+      "chunksCount": 16,
+      "transcriptLength": 12217,
+      "scrapedAt": "2026-03-18T12:01:29.470Z",
+      "status": "success"
+    },
+    "WGVxAmmJUmY": {
+      "videoId": "WGVxAmmJUmY",
+      "videoTitle": "The Underdog: From $10/hr to $1.5M/Year",
+      "videoUrl": "https://www.youtube.com/watch?v=WGVxAmmJUmY",
+      "chunksCount": 28,
+      "transcriptLength": 20659,
+      "scrapedAt": "2026-03-18T12:01:29.764Z",
+      "status": "success"
+    },
+    "TNZmNIYv050": {
+      "videoId": "TNZmNIYv050",
+      "videoTitle": "Faceless: From Immigrant to $1M/Year",
+      "videoUrl": "https://www.youtube.com/watch?v=TNZmNIYv050",
+      "chunksCount": 23,
+      "transcriptLength": 17519,
+      "scrapedAt": "2026-03-18T12:01:32.223Z",
+      "status": "success"
+    },
+    "WctFUP4w0sc": {
+      "videoId": "WctFUP4w0sc",
+      "videoTitle": "I Built A $1M SaaS In 87 Days",
+      "videoUrl": "https://www.youtube.com/watch?v=WctFUP4w0sc",
+      "chunksCount": 29,
+      "transcriptLength": 21499,
+      "scrapedAt": "2026-03-18T12:01:33.152Z",
+      "status": "success"
+    },
+    "OoFqTMPW_3E": {
+      "videoId": "OoFqTMPW_3E",
+      "videoTitle": "He Quit His Job And Makes $10M/Year Writing Online",
+      "videoUrl": "https://www.youtube.com/watch?v=OoFqTMPW_3E",
+      "chunksCount": 27,
+      "transcriptLength": 20570,
+      "scrapedAt": "2026-03-18T12:01:33.487Z",
+      "status": "success"
+    },
+    "8yCXyCN_NR0": {
+      "videoId": "8yCXyCN_NR0",
+      "videoTitle": "I Turned $150 into $2M/Year",
+      "videoUrl": "https://www.youtube.com/watch?v=8yCXyCN_NR0",
+      "chunksCount": 24,
+      "transcriptLength": 17849,
+      "scrapedAt": "2026-03-18T12:01:33.663Z",
+      "status": "success"
+    },
+    "b5JhfGHafZA": {
+      "videoId": "b5JhfGHafZA",
+      "videoTitle": "They Make $1.4M/Year With AI",
+      "videoUrl": "https://www.youtube.com/watch?v=b5JhfGHafZA",
+      "chunksCount": 20,
+      "transcriptLength": 14689,
+      "scrapedAt": "2026-03-18T12:01:34.574Z",
+      "status": "success"
+    },
+    "akM6P97_0B8": {
+      "videoId": "akM6P97_0B8",
+      "videoTitle": "The Multipreneur: He Makes $10M/Year With 6 Businesses",
+      "videoUrl": "https://www.youtube.com/watch?v=akM6P97_0B8",
+      "chunksCount": 18,
+      "transcriptLength": 13393,
+      "scrapedAt": "2026-03-18T12:01:34.644Z",
+      "status": "success"
+    },
+    "trNGj1BN1GU": {
+      "videoId": "trNGj1BN1GU",
+      "videoTitle": "I Make $1M/Year As An Introvert",
+      "videoUrl": "https://www.youtube.com/watch?v=trNGj1BN1GU",
+      "chunksCount": 22,
+      "transcriptLength": 16831,
+      "scrapedAt": "2026-03-18T12:01:34.655Z",
+      "status": "success"
+    },
+    "dphK9rh2F5U": {
+      "videoId": "dphK9rh2F5U",
+      "videoTitle": "I Make $1M/Month From Bed",
+      "videoUrl": "https://www.youtube.com/watch?v=dphK9rh2F5U",
+      "chunksCount": 23,
+      "transcriptLength": 16830,
+      "scrapedAt": "2026-03-18T12:01:35.493Z",
+      "status": "success"
+    },
+    "ptT0tfzeu8I": {
+      "videoId": "ptT0tfzeu8I",
+      "videoTitle": "I Hacked Reddit To Build A $1M Business",
+      "videoUrl": "https://www.youtube.com/watch?v=ptT0tfzeu8I",
+      "chunksCount": 9,
+      "transcriptLength": 6603,
+      "scrapedAt": "2026-03-18T12:01:35.576Z",
+      "status": "success"
+    },
+    "7pCgbhUWW54": {
+      "videoId": "7pCgbhUWW54",
+      "videoTitle": "I Turned One Website Into $1M/Year",
+      "videoUrl": "https://www.youtube.com/watch?v=7pCgbhUWW54",
+      "chunksCount": 23,
+      "transcriptLength": 16746,
+      "scrapedAt": "2026-03-18T12:01:35.689Z",
+      "status": "success"
+    },
+    "zTKYJWAEl78": {
+      "videoId": "zTKYJWAEl78",
+      "videoTitle": "I Make $5M/Year With 3 Businesses",
+      "videoUrl": "https://www.youtube.com/watch?v=zTKYJWAEl78",
+      "chunksCount": 23,
+      "transcriptLength": 17626,
+      "scrapedAt": "2026-03-18T12:01:36.555Z",
+      "status": "success"
+    },
+    "u8sW-NhGfXw": {
+      "videoId": "u8sW-NhGfXw",
+      "videoTitle": "I Built A $1M App In 5 Hours",
+      "videoUrl": "https://www.youtube.com/watch?v=u8sW-NhGfXw",
+      "chunksCount": 22,
+      "transcriptLength": 16355,
+      "scrapedAt": "2026-03-18T12:01:36.590Z",
+      "status": "success"
+    },
+    "OKl0C3zg0LU": {
+      "videoId": "OKl0C3zg0LU",
+      "videoTitle": "I Made $2.5M Selling A Digital Product",
+      "videoUrl": "https://www.youtube.com/watch?v=OKl0C3zg0LU",
+      "chunksCount": 24,
+      "transcriptLength": 17996,
+      "scrapedAt": "2026-03-18T12:01:36.767Z",
+      "status": "success"
+    },
+    "7LZ0MTkNr34": {
+      "videoId": "7LZ0MTkNr34",
+      "videoTitle": "I Make $1M/Year With One Website",
+      "videoUrl": "https://www.youtube.com/watch?v=7LZ0MTkNr34",
+      "chunksCount": 21,
+      "transcriptLength": 15863,
+      "scrapedAt": "2026-03-18T12:01:37.630Z",
+      "status": "success"
+    },
+    "6iqo7lNR_m0": {
+      "videoId": "6iqo7lNR_m0",
+      "videoTitle": "I Built This $5M/Year Business From A Van",
+      "videoUrl": "https://www.youtube.com/watch?v=6iqo7lNR_m0",
+      "chunksCount": 17,
+      "transcriptLength": 12646,
+      "scrapedAt": "2026-03-18T12:01:37.650Z",
+      "status": "success"
+    },
+    "uBGbvKScavk": {
+      "videoId": "uBGbvKScavk",
+      "videoTitle": "I Made $30M With My Side Project",
+      "videoUrl": "https://www.youtube.com/watch?v=uBGbvKScavk",
+      "chunksCount": 13,
+      "transcriptLength": 9825,
+      "scrapedAt": "2026-03-18T12:01:37.754Z",
+      "status": "success"
+    },
+    "GGxUH6EXF9I": {
+      "videoId": "GGxUH6EXF9I",
+      "videoTitle": "The Underdog: From Dead Broke to $30,000,000",
+      "videoUrl": "https://www.youtube.com/watch?v=GGxUH6EXF9I",
+      "chunksCount": 22,
+      "transcriptLength": 16365,
+      "scrapedAt": "2026-03-18T12:01:38.658Z",
+      "status": "success"
+    },
+    "IZsQqarWXtY": {
+      "videoId": "IZsQqarWXtY",
+      "videoTitle": "I Built a $1M AI App [No Code]",
+      "videoUrl": "https://www.youtube.com/watch?v=IZsQqarWXtY",
+      "chunksCount": 21,
+      "transcriptLength": 16058,
+      "scrapedAt": "2026-03-18T12:01:38.661Z",
+      "status": "success"
+    },
+    "G5cbMnFXcj0": {
+      "videoId": "G5cbMnFXcj0",
+      "videoTitle": "I Make $2.4M/Year With 6 YouTube Channels",
+      "videoUrl": "https://www.youtube.com/watch?v=G5cbMnFXcj0",
+      "chunksCount": 21,
+      "transcriptLength": 15414,
+      "scrapedAt": "2026-03-18T12:01:38.766Z",
+      "status": "success"
+    },
+    "vedkm3ZmHIE": {
+      "videoId": "vedkm3ZmHIE",
+      "videoTitle": "The $1.8M Solopreneur Playbook",
+      "videoUrl": "https://www.youtube.com/watch?v=vedkm3ZmHIE",
+      "chunksCount": 15,
+      "transcriptLength": 11176,
+      "scrapedAt": "2026-03-18T12:01:39.606Z",
+      "status": "success"
+    },
+    "Gv2fzC96Z40": {
+      "videoId": "Gv2fzC96Z40",
+      "videoTitle": "The Underdog: From His Parent’s Basement to $25M",
+      "videoUrl": "https://www.youtube.com/watch?v=Gv2fzC96Z40",
+      "chunksCount": 20,
+      "transcriptLength": 15003,
+      "scrapedAt": "2026-03-18T12:01:39.630Z",
+      "status": "success"
+    },
+    "T_wEmB5MapE": {
+      "videoId": "T_wEmB5MapE",
+      "videoTitle": "How I Built A $1M Business From This Starbucks",
+      "videoUrl": "https://www.youtube.com/watch?v=T_wEmB5MapE",
+      "chunksCount": 12,
+      "transcriptLength": 9095,
+      "scrapedAt": "2026-03-18T12:01:39.650Z",
+      "status": "success"
+    },
+    "lWwZ-fsD8gM": {
+      "videoId": "lWwZ-fsD8gM",
+      "videoTitle": "I Quit My $250K Job To Become an Author",
+      "videoUrl": "https://www.youtube.com/watch?v=lWwZ-fsD8gM",
+      "chunksCount": 18,
+      "transcriptLength": 13582,
+      "scrapedAt": "2026-03-18T12:01:40.527Z",
+      "status": "success"
+    },
+    "p3xa6mpxvOY": {
+      "videoId": "p3xa6mpxvOY",
+      "videoTitle": "I Became A Venture Capitalist With Only $1,000",
+      "videoUrl": "https://www.youtube.com/watch?v=p3xa6mpxvOY",
+      "chunksCount": 24,
+      "transcriptLength": 18481,
+      "scrapedAt": "2026-03-18T12:01:40.629Z",
+      "status": "success"
+    },
+    "nzVcbrLl9VU": {
+      "videoId": "nzVcbrLl9VU",
+      "videoTitle": "The Multipreneur: He’s Building A $10M Portfolio of Income Streams",
+      "videoUrl": "https://www.youtube.com/watch?v=nzVcbrLl9VU",
+      "chunksCount": 26,
+      "transcriptLength": 19537,
+      "scrapedAt": "2026-03-18T12:01:40.633Z",
+      "status": "success"
+    },
+    "IuoscQiQQLg": {
+      "videoId": "IuoscQiQQLg",
+      "videoTitle": "The Underdog: He Turned His Last $4,000 Into $48M",
+      "videoUrl": "https://www.youtube.com/watch?v=IuoscQiQQLg",
+      "chunksCount": 19,
+      "transcriptLength": 14120,
+      "scrapedAt": "2026-03-18T12:01:41.529Z",
+      "status": "success"
+    },
+    "e6COsh5wfNA": {
+      "videoId": "e6COsh5wfNA",
+      "videoTitle": "They Built A $2M Business To Fund Their Dreams",
+      "videoUrl": "https://www.youtube.com/watch?v=e6COsh5wfNA",
+      "chunksCount": 22,
+      "transcriptLength": 16858,
+      "scrapedAt": "2026-03-18T12:01:41.532Z",
+      "status": "success"
+    },
+    "i6kCkGmJc9M": {
+      "videoId": "i6kCkGmJc9M",
+      "videoTitle": "He Built A $2.5M/Year Business In 2 Years",
+      "videoUrl": "https://www.youtube.com/watch?v=i6kCkGmJc9M",
+      "chunksCount": 24,
+      "transcriptLength": 18373,
+      "scrapedAt": "2026-03-18T12:01:41.619Z",
+      "status": "success"
+    },
+    "irEi7DVBHdA": {
+      "videoId": "irEi7DVBHdA",
+      "videoTitle": "Meet The Kid Who Made $1M with ChatGPT",
+      "videoUrl": "https://www.youtube.com/watch?v=irEi7DVBHdA",
+      "chunksCount": 17,
+      "transcriptLength": 12797,
+      "scrapedAt": "2026-03-18T12:01:42.505Z",
+      "status": "success"
+    },
+    "wqN-gjnpns8": {
+      "videoId": "wqN-gjnpns8",
+      "videoTitle": "He's Launching A New $1M Business Every Month",
+      "videoUrl": "https://www.youtube.com/watch?v=wqN-gjnpns8",
+      "chunksCount": 23,
+      "transcriptLength": 17202,
+      "scrapedAt": "2026-03-18T12:01:42.595Z",
+      "status": "success"
+    },
+    "9pP4qSrt5GU": {
+      "videoId": "9pP4qSrt5GU",
+      "videoTitle": "I Made $2.3M Writing Like a 5th Grader",
+      "videoUrl": "https://www.youtube.com/watch?v=9pP4qSrt5GU",
+      "chunksCount": 22,
+      "transcriptLength": 16443,
+      "scrapedAt": "2026-03-18T12:01:43.184Z",
+      "status": "success"
+    },
+    "5MaPEK-yVVY": {
+      "videoId": "5MaPEK-yVVY",
+      "videoTitle": "I Make $845,601 Writing This Online...",
+      "videoUrl": "https://www.youtube.com/watch?v=5MaPEK-yVVY",
+      "chunksCount": 20,
+      "transcriptLength": 14761,
+      "scrapedAt": "2026-03-18T12:01:44.093Z",
+      "status": "success"
+    },
+    "5C3YCTL-36c": {
+      "videoId": "5C3YCTL-36c",
+      "videoTitle": "I Make $11M/Year Selling One Product",
+      "videoUrl": "https://www.youtube.com/watch?v=5C3YCTL-36c",
+      "chunksCount": 21,
+      "transcriptLength": 15384,
+      "scrapedAt": "2026-03-18T12:01:44.234Z",
+      "status": "success"
+    },
+    "Fk2J2U7669o": {
+      "videoId": "Fk2J2U7669o",
+      "videoTitle": "How To Build A $100M Podcast Empire",
+      "videoUrl": "https://www.youtube.com/watch?v=Fk2J2U7669o",
+      "chunksCount": 21,
+      "transcriptLength": 16038,
+      "scrapedAt": "2026-03-18T12:01:45.043Z",
+      "status": "success"
+    },
+    "v6IF-lVuvbs": {
+      "videoId": "v6IF-lVuvbs",
+      "videoTitle": "The Solopreneur: He Makes $1.7M With 0 Employees",
+      "videoUrl": "https://www.youtube.com/watch?v=v6IF-lVuvbs",
+      "chunksCount": 17,
+      "transcriptLength": 12979,
+      "scrapedAt": "2026-03-18T12:01:45.955Z",
+      "status": "success"
+    },
+    "dXKzST0FE-A": {
+      "videoId": "dXKzST0FE-A",
+      "videoTitle": "I Make $1.3M/Year With One Skill",
+      "videoUrl": "https://www.youtube.com/watch?v=dXKzST0FE-A",
+      "chunksCount": 16,
+      "transcriptLength": 12305,
+      "scrapedAt": "2026-03-18T12:01:45.983Z",
+      "status": "success"
+    },
+    "Km0FNcBI9CM": {
+      "videoId": "Km0FNcBI9CM",
+      "videoTitle": "Zero to $1.1B from Flipping Websites",
+      "videoUrl": "https://www.youtube.com/watch?v=Km0FNcBI9CM",
+      "chunksCount": 29,
+      "transcriptLength": 21489,
+      "scrapedAt": "2026-03-18T12:01:46.024Z",
+      "status": "success"
+    },
+    "BskeAo66er0": {
+      "videoId": "BskeAo66er0",
+      "videoTitle": "He Built A $600,000 One Person Business (with video editing)",
+      "videoUrl": "https://www.youtube.com/watch?v=BskeAo66er0",
+      "chunksCount": 27,
+      "transcriptLength": 20403,
+      "scrapedAt": "2026-03-18T12:01:46.962Z",
+      "status": "success"
+    },
+    "CnE_fLDqa7M": {
+      "videoId": "CnE_fLDqa7M",
+      "videoTitle": "He Turned $500 Into $10M",
+      "videoUrl": "https://www.youtube.com/watch?v=CnE_fLDqa7M",
+      "chunksCount": 26,
+      "transcriptLength": 19388,
+      "scrapedAt": "2026-03-18T12:01:47.026Z",
+      "status": "success"
+    },
+    "DZTApvWzMuY": {
+      "videoId": "DZTApvWzMuY",
+      "videoTitle": "He Makes $125,000/year As A Niche YouTuber",
+      "videoUrl": "https://www.youtube.com/watch?v=DZTApvWzMuY",
+      "chunksCount": 26,
+      "transcriptLength": 19388,
+      "scrapedAt": "2026-03-18T12:01:48.023Z",
+      "status": "success"
+    },
+    "hCvy-Rt7Naw": {
+      "videoId": "hCvy-Rt7Naw",
+      "videoTitle": "How To Make $30K/month With Cooking",
+      "videoUrl": "https://www.youtube.com/watch?v=hCvy-Rt7Naw",
+      "scrapedAt": "2026-03-18T12:01:50.699Z",
+      "status": "no-transcript",
+      "chunksCount": 0,
+      "transcriptLength": 0,
+      "errorMessage": "Failed to fetch transcript for video hCvy-Rt7Naw: Error: [YoutubeTranscript] 🚨 Transcript is disabled on this video (hCvy-Rt7Naw)"
+    },
+    "1ISRd0bS714": {
+      "videoId": "1ISRd0bS714",
+      "videoTitle": "Message Queues in System Design Interviews w/ Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=1ISRd0bS714",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 40,
+      "transcriptLength": 30498,
+      "scrapedAt": "2026-03-18T12:23:22.028Z",
+      "status": "success"
+    },
+    "d8rmosXttTE": {
+      "videoId": "d8rmosXttTE",
+      "videoTitle": "Concurrency in Low-level Design Interviews w/ Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=d8rmosXttTE",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 34,
+      "transcriptLength": 25346,
+      "scrapedAt": "2026-03-18T12:23:22.103Z",
+      "status": "success"
+    },
+    "s6nGkoGJhXk": {
+      "videoId": "s6nGkoGJhXk",
+      "videoTitle": "Low-Level Design Interview: Design Amazon Locker w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=s6nGkoGJhXk",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 71,
+      "transcriptLength": 53633,
+      "scrapedAt": "2026-03-18T12:23:22.179Z",
+      "status": "success"
+    },
+    "9UI4ikKP3Ws": {
+      "videoId": "9UI4ikKP3Ws",
+      "videoTitle": "Low-Level Design Interview: Design Connect Four w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=9UI4ikKP3Ws",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 87,
+      "transcriptLength": 65391,
+      "scrapedAt": "2026-03-18T12:23:22.190Z",
+      "status": "success"
+    },
+    "wI4L11EoW3I": {
+      "videoId": "wI4L11EoW3I",
+      "videoTitle": "Bot Detection | ML System Design Problem Breakdown",
+      "videoUrl": "https://www.youtube.com/watch?v=wI4L11EoW3I",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 73,
+      "transcriptLength": 55462,
+      "scrapedAt": "2026-03-18T12:23:22.247Z",
+      "status": "success"
+    },
+    "Qd76ZmfRs_Q": {
+      "videoId": "Qd76ZmfRs_Q",
+      "videoTitle": "How do Time Series Databases Work?",
+      "videoUrl": "https://www.youtube.com/watch?v=Qd76ZmfRs_Q",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 45,
+      "transcriptLength": 33975,
+      "scrapedAt": "2026-03-18T12:23:23.103Z",
+      "status": "success"
+    },
+    "1NngTUYPdpI": {
+      "videoId": "1NngTUYPdpI",
+      "videoTitle": "Caching in System Design Interviews w/ Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=1NngTUYPdpI",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 46,
+      "transcriptLength": 34887,
+      "scrapedAt": "2026-03-18T12:23:23.137Z",
+      "status": "success"
+    },
+    "CAda15Tawlg": {
+      "videoId": "CAda15Tawlg",
+      "videoTitle": "Behavioral Interview: Common Questions Broken Down by Ex-Meta & Amazon Senior Managers",
+      "videoUrl": "https://www.youtube.com/watch?v=CAda15Tawlg",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 106,
+      "transcriptLength": 79777,
+      "scrapedAt": "2026-03-18T12:23:23.202Z",
+      "status": "success"
+    },
+    "y-tA2NW4LNY": {
+      "videoId": "y-tA2NW4LNY",
+      "videoTitle": "Top-K System Design Interview Breakdown w/ Ex-Meta Senior Manager",
+      "videoUrl": "https://www.youtube.com/watch?v=y-tA2NW4LNY",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 113,
+      "transcriptLength": 85484,
+      "scrapedAt": "2026-03-18T12:23:23.362Z",
+      "status": "success"
+    },
+    "L521gizea4s": {
+      "videoId": "L521gizea4s",
+      "videoTitle": "Sharding in System Design Interviews w/ Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=L521gizea4s",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 46,
+      "transcriptLength": 34043,
+      "scrapedAt": "2026-03-18T12:23:24.167Z",
+      "status": "success"
+    },
+    "tgJKcKH_Ap8": {
+      "videoId": "tgJKcKH_Ap8",
+      "videoTitle": "Leetcode 200: Number of Islands - Coding Question Walkthrough",
+      "videoUrl": "https://www.youtube.com/watch?v=tgJKcKH_Ap8",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 27,
+      "transcriptLength": 20481,
+      "scrapedAt": "2026-03-18T12:23:24.960Z",
+      "status": "success"
+    },
+    "DQ57zYedMdQ": {
+      "videoId": "DQ57zYedMdQ",
+      "videoTitle": "API Design in System Design Interviews w/ Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=DQ57zYedMdQ",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 42,
+      "transcriptLength": 31882,
+      "scrapedAt": "2026-03-18T12:23:25.024Z",
+      "status": "success"
+    },
+    "TUcPS6dsWx4": {
+      "videoId": "TUcPS6dsWx4",
+      "videoTitle": "Data Modeling in System Design Interviews w/ Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=TUcPS6dsWx4",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 45,
+      "transcriptLength": 34172,
+      "scrapedAt": "2026-03-18T12:23:25.097Z",
+      "status": "success"
+    },
+    "MIJFyUPG4Z4": {
+      "videoId": "MIJFyUPG4Z4",
+      "videoTitle": "Design a Distributed Rate Limiter w/ a Ex-Meta Staff Engineer: System Design Breakdown",
+      "videoUrl": "https://www.youtube.com/watch?v=MIJFyUPG4Z4",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 79,
+      "transcriptLength": 59695,
+      "scrapedAt": "2026-03-18T12:23:25.146Z",
+      "status": "success"
+    },
+    "TD3-INhm60Q": {
+      "videoId": "TD3-INhm60Q",
+      "videoTitle": "Cassandra Deep Dive w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=TD3-INhm60Q",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 45,
+      "transcriptLength": 33750,
+      "scrapedAt": "2026-03-18T12:23:25.743Z",
+      "status": "success"
+    },
+    "o8nSXW-B7Rw": {
+      "videoId": "o8nSXW-B7Rw",
+      "videoTitle": "OpenAI & Meta Senior/Staff System Design Mock Interview: Design Online Auction",
+      "videoUrl": "https://www.youtube.com/watch?v=o8nSXW-B7Rw",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 61,
+      "transcriptLength": 46080,
+      "scrapedAt": "2026-03-18T12:23:26.594Z",
+      "status": "success"
+    },
+    "RvaMHMxHjp4": {
+      "videoId": "RvaMHMxHjp4",
+      "videoTitle": "Object Storage in System Design Interviews w/ Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=RvaMHMxHjp4",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 19,
+      "transcriptLength": 13886,
+      "scrapedAt": "2026-03-18T12:23:26.630Z",
+      "status": "success"
+    },
+    "l38XL9914fs": {
+      "videoId": "l38XL9914fs",
+      "videoTitle": "Design FB Post Search: System Design Interview breakdown w/ ex Meta Interviewer",
+      "videoUrl": "https://www.youtube.com/watch?v=l38XL9914fs",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 83,
+      "transcriptLength": 62857,
+      "scrapedAt": "2026-03-18T12:23:26.704Z",
+      "status": "success"
+    },
+    "Qj4-GruzyDU": {
+      "videoId": "Qj4-GruzyDU",
+      "videoTitle": "Design FB News Feed System Design Interview w/ ex: Meta Senior Manager",
+      "videoUrl": "https://www.youtube.com/watch?v=Qj4-GruzyDU",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 35,
+      "transcriptLength": 26147,
+      "scrapedAt": "2026-03-18T12:23:26.876Z",
+      "status": "success"
+    },
+    "yz1jtze4qr8": {
+      "videoId": "yz1jtze4qr8",
+      "videoTitle": "System Design Mock Interview: Design Yelp w/ Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=yz1jtze4qr8",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 52,
+      "transcriptLength": 39537,
+      "scrapedAt": "2026-03-18T12:23:28.143Z",
+      "status": "success"
+    },
+    "Ru54dxzCyD0": {
+      "videoId": "Ru54dxzCyD0",
+      "videoTitle": "How to Prepare for System Design Interviews w/ Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=Ru54dxzCyD0",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 28,
+      "transcriptLength": 20767,
+      "scrapedAt": "2026-03-18T12:23:28.967Z",
+      "status": "success"
+    },
+    "dYrMSHZnqw0": {
+      "videoId": "dYrMSHZnqw0",
+      "videoTitle": "The Art of People Manager Interviews: Tips and Tricks with Ex-Meta and Amazon Leader",
+      "videoUrl": "https://www.youtube.com/watch?v=dYrMSHZnqw0",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 44,
+      "transcriptLength": 32924,
+      "scrapedAt": "2026-03-18T12:23:29.013Z",
+      "status": "success"
+    },
+    "9KUC_nHydZg": {
+      "videoId": "9KUC_nHydZg",
+      "videoTitle": "Harmful Content Detection / Content Moderation | ML System Design Problem Breakdown",
+      "videoUrl": "https://www.youtube.com/watch?v=9KUC_nHydZg",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 71,
+      "transcriptLength": 53844,
+      "scrapedAt": "2026-03-18T12:23:29.087Z",
+      "status": "success"
+    },
+    "7-6F3b14baA": {
+      "videoId": "7-6F3b14baA",
+      "videoTitle": "API Gateways in System Design Interviews w/ Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=7-6F3b14baA",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 9,
+      "transcriptLength": 6890,
+      "scrapedAt": "2026-03-18T12:23:29.504Z",
+      "status": "success"
+    },
+    "nJsVO84LCGs": {
+      "videoId": "nJsVO84LCGs",
+      "videoTitle": "How to Learn System Design with Jordan Has No Life",
+      "videoUrl": "https://www.youtube.com/watch?v=nJsVO84LCGs",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 58,
+      "transcriptLength": 43305,
+      "scrapedAt": "2026-03-18T12:23:29.695Z",
+      "status": "success"
+    },
+    "vccwdhfqIrI": {
+      "videoId": "vccwdhfqIrI",
+      "videoTitle": "Consistent Hashing: Easy Explanation for System Design Interviews",
+      "videoUrl": "https://www.youtube.com/watch?v=vccwdhfqIrI",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 10,
+      "transcriptLength": 6990,
+      "scrapedAt": "2026-03-18T12:23:30.495Z",
+      "status": "success"
+    },
+    "IgyU0iFIoqM": {
+      "videoId": "IgyU0iFIoqM",
+      "videoTitle": "Data Structures for Big Data in Interviews - Bloom Filters, Count-Min Sketch, HyperLogLog",
+      "videoUrl": "https://www.youtube.com/watch?v=IgyU0iFIoqM",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 32,
+      "transcriptLength": 24337,
+      "scrapedAt": "2026-03-18T12:23:30.524Z",
+      "status": "success"
+    },
+    "IUrQ5_g3XKs": {
+      "videoId": "IUrQ5_g3XKs",
+      "videoTitle": "System Design Interview: Design YouTube w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=IUrQ5_g3XKs",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 58,
+      "transcriptLength": 44031,
+      "scrapedAt": "2026-03-18T12:23:30.600Z",
+      "status": "success"
+    },
+    "SHkbPm1Wrno": {
+      "videoId": "SHkbPm1Wrno",
+      "videoTitle": "Networking Essentials for System Design Interviews w/ Ex Meta Senior Manager",
+      "videoUrl": "https://www.youtube.com/watch?v=SHkbPm1Wrno",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 85,
+      "transcriptLength": 64067,
+      "scrapedAt": "2026-03-18T12:23:31.070Z",
+      "status": "success"
+    },
+    "BHCSL_ZifI0": {
+      "videoId": "BHCSL_ZifI0",
+      "videoTitle": "DB Indexing in System Design Interviews - B-tree, Geospatial, Inverted Index, and more!",
+      "videoUrl": "https://www.youtube.com/watch?v=BHCSL_ZifI0",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 21,
+      "transcriptLength": 15437,
+      "scrapedAt": "2026-03-18T12:23:32.467Z",
+      "status": "success"
+    },
+    "bBvPQZmPXwQ": {
+      "videoId": "bBvPQZmPXwQ",
+      "videoTitle": "Behavioral Interview Discussion with Ex-Meta Hiring Committee Member",
+      "videoUrl": "https://www.youtube.com/watch?v=bBvPQZmPXwQ",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 66,
+      "transcriptLength": 49556,
+      "scrapedAt": "2026-03-18T12:23:33.310Z",
+      "status": "success"
+    },
+    "2X2SO3Y-af8": {
+      "videoId": "2X2SO3Y-af8",
+      "videoTitle": "DynamoDB Deep Dive w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=2X2SO3Y-af8",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 34,
+      "transcriptLength": 25146,
+      "scrapedAt": "2026-03-18T12:23:33.317Z",
+      "status": "success"
+    },
+    "LjLx0fCd1k8": {
+      "videoId": "LjLx0fCd1k8",
+      "videoTitle": "System Design Interview: Design Live Comments w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=LjLx0fCd1k8",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 81,
+      "transcriptLength": 61358,
+      "scrapedAt": "2026-03-18T12:23:33.410Z",
+      "status": "success"
+    },
+    "GncgOIiMII8": {
+      "videoId": "GncgOIiMII8",
+      "videoTitle": "Recommendation System Infra Basics 1",
+      "videoUrl": "https://www.youtube.com/watch?v=GncgOIiMII8",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 14,
+      "transcriptLength": 10535,
+      "scrapedAt": "2026-03-18T12:23:33.544Z",
+      "status": "success"
+    },
+    "cr6p0n0N-VA": {
+      "videoId": "cr6p0n0N-VA",
+      "videoTitle": "Design Whatsapp: System Design Interview w/ a Ex-Meta Senior Manager",
+      "videoUrl": "https://www.youtube.com/watch?v=cr6p0n0N-VA",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 71,
+      "transcriptLength": 53911,
+      "scrapedAt": "2026-03-18T12:23:33.856Z",
+      "status": "success"
+    },
+    "qJ9_ABtT6RQ": {
+      "videoId": "qJ9_ABtT6RQ",
+      "videoTitle": "Interview with a Databricks Head of Applied AI: Industry Trends, How to Move Ahead, and Keeping Sane",
+      "videoUrl": "https://www.youtube.com/watch?v=qJ9_ABtT6RQ",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 37,
+      "transcriptLength": 27919,
+      "scrapedAt": "2026-03-18T12:23:34.732Z",
+      "status": "success"
+    },
+    "suPO02S0cR8": {
+      "videoId": "suPO02S0cR8",
+      "videoTitle": "Coding Interview Fundamentals: Post-Order Traversal",
+      "videoUrl": "https://www.youtube.com/watch?v=suPO02S0cR8",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 36,
+      "transcriptLength": 27164,
+      "scrapedAt": "2026-03-18T12:23:34.746Z",
+      "status": "success"
+    },
+    "iUU4O1sWtJA": {
+      "videoId": "iUU4O1sWtJA",
+      "videoTitle": "Beginner System Design Interview: Design Bitly w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=iUU4O1sWtJA",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 85,
+      "transcriptLength": 63837,
+      "scrapedAt": "2026-03-18T12:23:34.799Z",
+      "status": "success"
+    },
+    "18Fg5Akhkqw": {
+      "videoId": "18Fg5Akhkqw",
+      "videoTitle": "System Design Interview: Design Tinder w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=18Fg5Akhkqw",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 101,
+      "transcriptLength": 76333,
+      "scrapedAt": "2026-03-18T12:23:35.147Z",
+      "status": "success"
+    },
+    "VdrEq0cODu4": {
+      "videoId": "VdrEq0cODu4",
+      "videoTitle": "CAP Theorem in System Design Interviews",
+      "videoUrl": "https://www.youtube.com/watch?v=VdrEq0cODu4",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 20,
+      "transcriptLength": 15321,
+      "scrapedAt": "2026-03-18T12:23:44.803Z",
+      "status": "success"
+    },
+    "ZztKT-KVqwA": {
+      "videoId": "ZztKT-KVqwA",
+      "videoTitle": "Coding Interview Fundamentals: Depth-First Search and Recursion (Binary Trees)",
+      "videoUrl": "https://www.youtube.com/watch?v=ZztKT-KVqwA",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 29,
+      "transcriptLength": 21670,
+      "scrapedAt": "2026-03-18T12:23:45.645Z",
+      "status": "success"
+    },
+    "1xHADtekTNg": {
+      "videoId": "1xHADtekTNg",
+      "videoTitle": "System Design Interview: Design LeetCode (Online Judge) w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=1xHADtekTNg",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 92,
+      "transcriptLength": 69150,
+      "scrapedAt": "2026-03-18T12:23:45.741Z",
+      "status": "success"
+    },
+    "PuZvF2EyfBM": {
+      "videoId": "PuZvF2EyfBM",
+      "videoTitle": "Elasticsearch Deep Dive w/ a Ex-Meta Senior Manager for System Design Interviews",
+      "videoUrl": "https://www.youtube.com/watch?v=PuZvF2EyfBM",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 54,
+      "transcriptLength": 40807,
+      "scrapedAt": "2026-03-18T12:23:45.757Z",
+      "status": "success"
+    },
+    "pFTyGG4mORk": {
+      "videoId": "pFTyGG4mORk",
+      "videoTitle": "Design Yelp, Meta Staff Product Architecture: Hello Interview Mock",
+      "videoUrl": "https://www.youtube.com/watch?v=pFTyGG4mORk",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 73,
+      "transcriptLength": 54727,
+      "scrapedAt": "2026-03-18T12:23:46.190Z",
+      "status": "success"
+    },
+    "DU8o-OTeoCc": {
+      "videoId": "DU8o-OTeoCc",
+      "videoTitle": "Kafka System Design Deep Dive w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=DU8o-OTeoCc",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 62,
+      "transcriptLength": 46395,
+      "scrapedAt": "2026-03-18T12:23:46.251Z",
+      "status": "success"
+    },
+    "3Hb5An-NaX8": {
+      "videoId": "3Hb5An-NaX8",
+      "videoTitle": "Interview with a Meta EM: AI Impact on SWEs, Team Match, Ramp-Up, How to Learn",
+      "videoUrl": "https://www.youtube.com/watch?v=3Hb5An-NaX8",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 66,
+      "transcriptLength": 49744,
+      "scrapedAt": "2026-03-18T12:23:47.119Z",
+      "status": "success"
+    },
+    "fmT5nlEkl3U": {
+      "videoId": "fmT5nlEkl3U",
+      "videoTitle": "Redis Deep Dive w/ a Ex-Meta Senior Manager",
+      "videoUrl": "https://www.youtube.com/watch?v=fmT5nlEkl3U",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 37,
+      "transcriptLength": 28151,
+      "scrapedAt": "2026-03-18T12:23:47.124Z",
+      "status": "success"
+    },
+    "Zcv_899yqhI": {
+      "videoId": "Zcv_899yqhI",
+      "videoTitle": "Design an Ad Click Aggregator w/ a Ex-Meta Staff Engineer System Design Interview",
+      "videoUrl": "https://www.youtube.com/watch?v=Zcv_899yqhI",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 86,
+      "transcriptLength": 64998,
+      "scrapedAt": "2026-03-18T12:23:47.144Z",
+      "status": "success"
+    },
+    "krsuaUp__pM": {
+      "videoId": "krsuaUp__pM",
+      "videoTitle": "Design a Web Crawler System Design Interview w/ a Ex-Meta Staff Engineer",
+      "videoUrl": "https://www.youtube.com/watch?v=krsuaUp__pM",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 89,
+      "transcriptLength": 67339,
+      "scrapedAt": "2026-03-18T12:23:47.242Z",
+      "status": "success"
+    },
+    "_UZ1ngy-kOI": {
+      "videoId": "_UZ1ngy-kOI",
+      "videoTitle": "Design Dropbox or Google Drive w/ a Ex-Meta Staff Engineer System Design Interview",
+      "videoUrl": "https://www.youtube.com/watch?v=_UZ1ngy-kOI",
+      "channelTitle": "Hello Interview - SWE Interview Preparation",
+      "chunksCount": 82,
+      "transcriptLength": 61934,
+      "scrapedAt": "2026-03-18T12:23:47.523Z",
+      "status": "success"
+    }
+  }
+}

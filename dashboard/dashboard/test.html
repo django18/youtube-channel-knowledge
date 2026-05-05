@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Test</h1>
+<div id="app-test"></div>
+<script>
+  fetch('http://localhost:3000/api/youtube/tracker')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('app-test').innerHTML = 
+        `<p>API Works! Found ${data.totalVideos} videos</p>`;
+    })
+    .catch(e => {
+      document.getElementById('app-test').innerHTML = 
+        `<p style="color:red">Error: ${e.message}</p>`;
+    });
+</script>
+</body>
+</html>
