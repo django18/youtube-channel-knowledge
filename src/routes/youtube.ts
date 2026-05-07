@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { processVideo } from '../lib/youtube';
+import { enqueueJob, getJobStatus } from '../lib/queue/task-queue';
 import { processChannelVideos } from '../lib/youtube-channel';
 import { storeInVectorDB, searchVectorDB } from '../lib/youtube-vectorstore';
 import { config } from '../config';
@@ -96,59 +97,54 @@ router.post('/youtube/scrape-video', async (c) => {
 router.post('/youtube/scrape-channel', async (c) => {
   try {
     const body = await c.req.json();
-    const { channelUrl, maxVideos = 50, storeInDB = true, skipScraped = true, concurrency = 5 } = body;
+    const { channelUrl, maxVideos = 50, skipScraped = true, concurrency = 5 } = body;
 
     if (!channelUrl) {
       return c.json({ error: 'channelUrl is required' }, 400);
     }
 
-    console.log(`Starting channel scrape: ${channelUrl} (max ${maxVideos} videos, ${concurrency} concurrent workers)`);
-    if (skipScraped) {
-      console.log('Skipping already scraped videos...');
-    }
-
-    const processedTranscripts = await processChannelVideos(channelUrl, {
+    // Enqueue the job for background processing
+    const jobId = await enqueueJob('scrape-channel', {
+      channelUrl,
       maxVideos,
-      chunkSize: config.chunkSize,
-      chunkOverlap: config.chunkOverlap,
       skipScraped,
       concurrency,
-      onProgress: (current, total, title) => {
-        console.log(`[${current}/${total}] Processing: ${title}`);
-      },
     });
-
-    let stored = false;
-    let totalChunks = 0;
-
-    if (storeInDB && processedTranscripts.length > 0) {
-      await storeInVectorDB(processedTranscripts);
-      stored = true;
-      totalChunks = processedTranscripts.reduce((sum, t) => sum + t.chunks.length, 0);
-    }
 
     return c.json({
       success: true,
-      videosProcessed: processedTranscripts.length,
-      totalChunks,
-      stored,
-      videos: processedTranscripts.map(t => ({
-        videoId: t.videoId,
-        title: t.videoTitle,
-        url: t.videoUrl,
-        chunksCount: t.chunks.length,
-      })),
+      message: 'Channel scraping job started in the background',
+      jobId,
+      statusUrl: `/api/youtube/jobs/${jobId}`,
     });
   } catch (error: any) {
-    console.error('Error scraping channel:', error);
+    console.error('Error enqueuing channel scrape:', error);
     return c.json(
       {
-        error: 'Failed to scrape channel',
+        error: 'Failed to start channel scrape',
         message: error.message,
       },
       500
     );
   }
+});
+
+/**
+ * GET /api/youtube/jobs/:id
+ * Get the status of a background job
+ */
+router.get('/youtube/jobs/:id', async (c) => {
+  const id = c.req.param('id');
+  const job = await getJobStatus(id);
+
+  if (!job) {
+    return c.json({ error: 'Job not found' }, 404);
+  }
+
+  return c.json({
+    success: true,
+    job,
+  });
 });
 
 /**

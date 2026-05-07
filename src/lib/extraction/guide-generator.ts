@@ -68,6 +68,9 @@ export async function generatePlaybook(request: SynthesisRequest): Promise<Playb
     }
   });
 
-  console.log(`✓ Successfully generated Playbook: ${playbook.title}`);
-  return playbook;
+  // 3. Final Step: Validate evidence against ChromaDB
+  const validatedPlaybook = await validatePlaybookEvidence(playbook);
+
+  console.log(`✓ Successfully generated and validated Playbook: ${validatedPlaybook.title}`);
+  return validatedPlaybook;
 }
