@@ -2,6 +2,7 @@ import OpenAI from 'openai';
 import { ExtractedEntitiesSchema, type ExtractedEntities } from '../schemas/entities';
 import { buildExtractionPrompt } from './prompts';
 import type { VideoTranscript } from './chroma-reader';
+import { saveToGraph } from './graph-store';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -148,6 +149,12 @@ export async function extractEntitiesBatch(
 
   console.log(`\n✓ Batch extraction complete:`);
   console.log(`  - Successful: ${successful}`);
+  console.log(`  - Failed: ${failed}`);
+  console.log(`  - Total tokens: ${totalTokens.toLocaleString()}`);
+
+  return results;
+}
+sole.log(`  - Successful: ${successful}`);
   console.log(`  - Failed: ${failed}`);
   console.log(`  - Total tokens: ${totalTokens.toLocaleString()}`);
 

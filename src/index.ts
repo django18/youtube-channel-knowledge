@@ -41,6 +41,7 @@ app.get('/health', (c) => {
 app.route('/api', scrapeRouter);
 app.route('/api', searchRouter);
 app.route('/api', youtubeRouter);
+app.route('/api/knowledge', knowledgeRouter);
 
 // Start server
 console.log(`🚀 Server starting on port ${config.port}`);
@@ -52,4 +53,6 @@ console.log(`⚙️  Embeddings: ${config.useJinaEmbeddings ? 'Jina AI' : 'Simpl
 export default {
   port: config.port,
   fetch: app.fetch,
+};
+
 };
