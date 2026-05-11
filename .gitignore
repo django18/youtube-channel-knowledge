@@ -23,6 +23,9 @@ data/chroma/*
 data/neo4j/
 data/redis/
 
+# Eval results (kept locally / tracked elsewhere)
+eval/results/
+
 # OS files
 .DS_Store
 Thumbs.db

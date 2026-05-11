@@ -1,35 +1,28 @@
 export const config = {
-  // Server config
+  // Server
   port: parseInt(process.env.PORT || '3000'),
 
-  // Jina.ai config
-  jinaReaderUrl: 'https://r.jina.ai/',
-  jinaApiKey: process.env.JINA_API_KEY || '', // Optional for basic usage
-
-  // ChromaDB config
+  // ChromaDB
   chromaUrl: process.env.CHROMA_URL || 'http://localhost:8000',
-  collectionName: process.env.COLLECTION_NAME || 'scraped_content',
 
-  // Scraper config
-  maxDepth: parseInt(process.env.MAX_DEPTH || '3'),
-  maxConcurrent: parseInt(process.env.MAX_CONCURRENT || '5'),
-  requestDelay: parseInt(process.env.REQUEST_DELAY || '1000'), // ms
-  userAgent: 'Mozilla/5.0 (compatible; CustomScraper/1.0)',
-
-  // Embedding config
-  embeddingModel: process.env.EMBEDDING_MODEL || 'Xenova/all-MiniLM-L6-v2', // Local transformers.js model
-  useJinaEmbeddings: process.env.USE_JINA_EMBEDDINGS === 'true',
-  jinaEmbeddingApiKey: process.env.JINA_EMBEDDING_API_KEY || '',
-
-  // Vector DB config
+  // Chunking (transcript chunks)
   chunkSize: parseInt(process.env.CHUNK_SIZE || '1000'),
   chunkOverlap: parseInt(process.env.CHUNK_OVERLAP || '200'),
 
-  // YouTube config
+  // Embedding
+  embeddingModel: process.env.EMBEDDING_MODEL || 'Xenova/all-MiniLM-L6-v2',
+  useJinaEmbeddings: process.env.USE_JINA_EMBEDDINGS === 'true',
+  jinaEmbeddingApiKey: process.env.JINA_EMBEDDING_API_KEY || '',
+
+  // YouTube collection in Chroma
   youtubeCollectionName: process.env.YOUTUBE_COLLECTION_NAME || 'youtube_transcripts',
 
-  // Neo4j config
+  // Neo4j
   neo4jUri: process.env.NEO4J_URI || 'bolt://localhost:7687',
   neo4jUser: process.env.NEO4J_USER || 'neo4j',
   neo4jPassword: process.env.NEO4J_PASSWORD || 'password',
+
+  // Eval
+  evalOutputDir: process.env.EVAL_OUTPUT_DIR || './eval/results',
+  evalGoldenPath: process.env.EVAL_GOLDEN_PATH || './eval/golden.jsonl',
 };
