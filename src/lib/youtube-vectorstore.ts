@@ -56,10 +56,20 @@ async function getCollection(): Promise<Collection> {
       metadata: {
         description: 'YouTube video transcripts with semantic embeddings',
         'hnsw:space': 'cosine',
+        provider: config.embeddingModel,
+        dimension: 384,
       },
     });
 
-    console.log(`✓ Connected to collection: ${config.youtubeCollectionName}`);
+    const meta = (collection as any).metadata ?? {};
+    if (meta.provider && meta.provider !== config.embeddingModel) {
+      throw new Error(
+        `YouTube collection was created with provider '${meta.provider}' but current is '${config.embeddingModel}'. ` +
+        `Recreate the collection to switch providers.`
+      );
+    }
+
+    console.log(`✓ Connected to collection: ${config.youtubeCollectionName} (provider=${config.embeddingModel})`);
   } catch (error) {
     console.error('Failed to connect to ChromaDB:', error);
     throw new Error(`ChromaDB connection failed: ${error}`);

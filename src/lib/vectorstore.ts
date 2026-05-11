@@ -14,43 +14,64 @@ export class VectorStore {
   }
 
   async initialize(): Promise<void> {
-    try {
-      // Get or create collection
-      this.collection = await this.client.getOrCreateCollection({
-        name: config.collectionName,
-        metadata: {
-          description: 'Scraped web content with embeddings',
-          'hnsw:space': 'cosine'
-        },
-      });
+    this.collection = await this.client.getOrCreateCollection({
+      name: config.collectionName,
+      metadata: {
+        description: 'Scraped web content with embeddings',
+        'hnsw:space': 'cosine',
+        provider: this.embeddings.name,
+        dimension: this.embeddings.dimension,
+      },
+    });
 
-      console.log(`ChromaDB collection '${config.collectionName}' initialized`);
-    } catch (error) {
-      console.error('Error initializing ChromaDB:', error);
-      throw error;
+    await this.assertProviderMatch();
+    console.log(`ChromaDB collection '${config.collectionName}' initialized (${this.embeddings.name}, dim=${this.embeddings.dimension})`);
+  }
+
+  /**
+   * If collection was created with a different embedding provider/dim, fail fast.
+   * Mixing dimensions in one collection corrupts retrieval.
+   */
+  private async assertProviderMatch(): Promise<void> {
+    if (!this.collection) return;
+    const meta = (this.collection as any).metadata ?? {};
+    const storedProvider = meta.provider;
+    const storedDim = meta.dimension;
+
+    if (storedProvider && storedProvider !== this.embeddings.name) {
+      throw new Error(
+        `Collection '${config.collectionName}' was created with provider '${storedProvider}' but current is '${this.embeddings.name}'. ` +
+        `Switching providers mid-collection corrupts retrieval. Either revert provider or recreate the collection.`
+      );
+    }
+    if (storedDim && storedDim !== this.embeddings.dimension) {
+      throw new Error(
+        `Collection '${config.collectionName}' dimension is ${storedDim} but provider yields ${this.embeddings.dimension}. ` +
+        `Recreate the collection.`
+      );
     }
   }
 
   async addPages(pages: ScrapedPage[]): Promise<void> {
-    if (!this.collection) {
-      await this.initialize();
-    }
-
+    if (!this.collection) await this.initialize();
     console.log(`Processing ${pages.length} pages for vector storage...`);
-
     for (const page of pages) {
       await this.addPage(page);
     }
-
     console.log('All pages added to vector store');
   }
 
+  /**
+   * Delete-then-add to keep re-scrapes clean. Without this, if a page shrinks
+   * from 12 chunks to 8 chunks on re-scrape, chunks 8..11 of the old version
+   * remain in the index forever.
+   */
   async addPage(page: ScrapedPage): Promise<void> {
-    if (!this.collection) {
-      throw new Error('Collection not initialized');
-    }
+    if (!this.collection) await this.initialize();
+    if (!this.collection) throw new Error('Collection not initialized');
 
-    // Split content into chunks
+    await this.deleteByUrl(page.url).catch(() => {});
+
     const chunks = this.splitIntoChunks(page.content);
 
     const chunkData: ChunkData[] = chunks.map((chunk, index) => ({
@@ -65,11 +86,9 @@ export class VectorStore {
       },
     }));
 
-    // Generate embeddings for all chunks
     const texts = chunkData.map(c => c.content);
     const embeddings = await this.embeddings.embed(texts);
 
-    // Add to ChromaDB
     await this.collection.add({
       ids: chunkData.map(c => c.id),
       embeddings,
@@ -88,35 +107,30 @@ export class VectorStore {
   }
 
   async search(query: string, limit: number = 10, filter?: Record<string, any>): Promise<SearchResult[]> {
-    if (!this.collection) {
-      await this.initialize();
-    }
+    if (!this.collection) await this.initialize();
+    if (!this.collection) throw new Error('Collection not initialized');
 
-    if (!this.collection) {
-      throw new Error('Collection not initialized');
-    }
-
-    // Generate query embedding
     const queryEmbedding = await this.embeddings.embedQuery(query);
 
-    // Search in ChromaDB
     const results = await this.collection.query({
       queryEmbeddings: [queryEmbedding],
       nResults: limit,
       where: filter,
     });
 
-    // Format results
     const searchResults: SearchResult[] = [];
 
     if (results.ids && results.ids[0]) {
       for (let i = 0; i < results.ids[0].length; i++) {
+        const distance = results.distances?.[0]?.[i];
+        // Cosine distance -> similarity. Matches youtube-vectorstore convention.
+        const score = distance !== undefined && distance !== null ? 1 - distance : 0;
         searchResults.push({
           id: results.ids[0][i],
-          url: results.metadatas?.[0]?.[i]?.url as string || '',
-          content: results.documents?.[0]?.[i] as string || '',
-          score: results.distances?.[0]?.[i] || 0,
-          metadata: results.metadatas?.[0]?.[i] as Record<string, any> || {},
+          url: (results.metadatas?.[0]?.[i]?.url as string) || '',
+          content: (results.documents?.[0]?.[i] as string) || '',
+          score,
+          metadata: (results.metadatas?.[0]?.[i] as Record<string, any>) || {},
         });
       }
     }
@@ -125,32 +139,23 @@ export class VectorStore {
   }
 
   async deleteByUrl(url: string): Promise<void> {
-    if (!this.collection) {
-      throw new Error('Collection not initialized');
-    }
+    if (!this.collection) await this.initialize();
+    if (!this.collection) throw new Error('Collection not initialized');
 
-    // Delete all chunks from this URL
-    await this.collection.delete({
-      where: { url },
-    });
-
-    console.log(`Deleted all chunks from ${url}`);
+    await this.collection.delete({ where: { url } });
   }
 
   async getStats(): Promise<any> {
-    if (!this.collection) {
-      await this.initialize();
-    }
-
-    if (!this.collection) {
-      return { count: 0 };
-    }
+    if (!this.collection) await this.initialize();
+    if (!this.collection) return { count: 0 };
 
     const count = await this.collection.count();
 
     return {
       collectionName: config.collectionName,
       totalChunks: count,
+      provider: this.embeddings.name,
+      dimension: this.embeddings.dimension,
     };
   }
 
@@ -164,7 +169,6 @@ export class VectorStore {
       const end = Math.min(start + chunkSize, text.length);
       let chunk = text.slice(start, end);
 
-      // Try to break at sentence boundary
       if (end < text.length) {
         const lastPeriod = chunk.lastIndexOf('.');
         const lastNewline = chunk.lastIndexOf('\n');
@@ -182,7 +186,6 @@ export class VectorStore {
 
       chunks.push(chunk.trim());
 
-      // Apply overlap for next chunk
       if (start < text.length) {
         start -= chunkOverlap;
       }

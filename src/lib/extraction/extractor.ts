@@ -154,9 +154,3 @@ export async function extractEntitiesBatch(
 
   return results;
 }
-sole.log(`  - Successful: ${successful}`);
-  console.log(`  - Failed: ${failed}`);
-  console.log(`  - Total tokens: ${totalTokens.toLocaleString()}`);
-
-  return results;
-}

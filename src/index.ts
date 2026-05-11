@@ -7,6 +7,7 @@ import youtubeRouter from './routes/youtube';
 import knowledgeRouter from './routes/knowledge';
 import { config } from './config';
 import { startWorker } from './lib/queue/worker';
+import { initGraph } from './lib/extraction/graph-store';
 
 const app = new Hono();
 
@@ -52,8 +53,12 @@ console.log(`🔍 Collection: ${config.collectionName}`);
 console.log(`🤖 Max crawl depth: ${config.maxDepth}`);
 console.log(`⚙️  Embeddings: ${config.useJinaEmbeddings ? 'Jina AI' : 'Simple (demo)'}`);
 
-// Start background worker
-startWorker().catch(err => console.error('Worker failed to start:', err));
+// Init Neo4j constraints (idempotent), then start worker
+initGraph()
+  .catch(err => console.error('Neo4j init failed (continuing):', err))
+  .finally(() => {
+    startWorker().catch(err => console.error('Worker failed to start:', err));
+  });
 
 export default {
   port: config.port,

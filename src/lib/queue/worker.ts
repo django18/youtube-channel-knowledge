@@ -1,4 +1,4 @@
-import { popNextJob, updateJob, type Job } from './task-queue';
+import { popNextJob, completeJob, failJob, heartbeat, reapStaleJobs, type Job } from './task-queue';
 import { processVideo } from '../youtube';
 import { processChannelVideos } from '../youtube-channel';
 import { storeInVectorDB } from '../youtube-vectorstore';
@@ -6,40 +6,54 @@ import { markVideoAsScraped } from '../youtube-tracker';
 import { config } from '../../config';
 
 let isRunning = false;
+const REAP_INTERVAL_MS = 60_000;
+const HEARTBEAT_INTERVAL_MS = 30_000;
 
-/**
- * Background worker to process scraping jobs
- */
 export async function startWorker() {
   if (isRunning) return;
   isRunning = true;
-  
+
   console.log('👷 Background worker started...');
+
+  const initialReap = await reapStaleJobs();
+  if (initialReap > 0) {
+    console.log(`Recovered ${initialReap} stale jobs on boot`);
+  }
+
+  setInterval(() => {
+    reapStaleJobs().catch(err => console.error('Reaper error:', err));
+  }, REAP_INTERVAL_MS);
 
   while (isRunning) {
     try {
       const job = await popNextJob();
-      
+
       if (!job) {
-        // Wait 5 seconds before checking again if queue is empty
         await new Promise(resolve => setTimeout(resolve, 5000));
         continue;
       }
 
-      console.log(`\n📦 Processing job ${job.id} (${job.type})`);
-      
+      console.log(`\n📦 Processing job ${job.id} (${job.type}, attempt ${job.attempts})`);
+
+      const hbTimer = setInterval(() => {
+        heartbeat(job.id).catch(() => {});
+      }, HEARTBEAT_INTERVAL_MS);
+
       try {
+        let result: any;
         if (job.type === 'scrape-video') {
-          await handleScrapeVideo(job);
+          result = await handleScrapeVideo(job);
         } else if (job.type === 'scrape-channel') {
-          await handleScrapeChannel(job);
+          result = await handleScrapeChannel(job);
         }
 
-        await updateJob(job.id, { status: 'completed', progress: 100 });
+        await completeJob(job.id, result);
         console.log(`✅ Job ${job.id} completed`);
       } catch (error: any) {
         console.error(`❌ Job ${job.id} failed:`, error);
-        await updateJob(job.id, { status: 'failed', error: error.message });
+        await failJob(job.id, error?.message ?? String(error));
+      } finally {
+        clearInterval(hbTimer);
       }
     } catch (error) {
       console.error('Worker loop error:', error);
@@ -50,7 +64,7 @@ export async function startWorker() {
 
 async function handleScrapeVideo(job: Job) {
   const { videoUrl } = job.payload;
-  
+
   const processed = await processVideo(
     videoUrl,
     config.chunkSize,
@@ -58,7 +72,7 @@ async function handleScrapeVideo(job: Job) {
   );
 
   await storeInVectorDB([processed]);
-  
+
   markVideoAsScraped({
     videoId: processed.videoId,
     videoTitle: processed.videoTitle,
@@ -82,6 +96,8 @@ async function handleScrapeChannel(job: Job) {
     concurrency,
     onProgress: async (current, total) => {
       const progress = Math.round((current / total) * 100);
+      await heartbeat(job.id);
+      const { updateJob } = await import('./task-queue');
       await updateJob(job.id, { progress });
     },
   });
