@@ -4,6 +4,7 @@ import { logger } from 'hono/logger';
 import scrapeRouter from './routes/scrape';
 import searchRouter from './routes/search';
 import youtubeRouter from './routes/youtube';
+import knowledgeRouter from './routes/knowledge';
 import { config } from './config';
 import { startWorker } from './lib/queue/worker';
 
