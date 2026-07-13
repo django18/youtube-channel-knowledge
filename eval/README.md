@@ -38,9 +38,9 @@ bun run eval
 bun run eval ./eval/my-golden.jsonl
 
 # HTTP (server must be running)
-curl -X POST http://localhost:3000/api/eval/run
-curl http://localhost:3000/api/eval/latest?format=markdown
-curl http://localhost:3000/api/eval/history?limit=20
+curl -X POST http://localhost:3100/api/eval/run
+curl http://localhost:3100/api/eval/latest?format=markdown
+curl http://localhost:3100/api/eval/history?limit=20
 ```
 
 ## Bootstrap golden cases from scraped data

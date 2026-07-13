@@ -1,9 +1,9 @@
 export const config = {
   // Server
-  port: parseInt(process.env.PORT || '3000'),
+  port: parseInt(process.env.PORT || '3100'),
 
-  // ChromaDB
-  chromaUrl: process.env.CHROMA_URL || 'http://localhost:8000',
+  // ChromaDB (host port 8100 → container 8000, see docker-compose.yml)
+  chromaUrl: process.env.CHROMA_URL || 'http://localhost:8100',
 
   // Chunking (transcript chunks)
   chunkSize: parseInt(process.env.CHUNK_SIZE || '1000'),

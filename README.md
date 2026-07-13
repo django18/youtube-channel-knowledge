@@ -67,7 +67,7 @@ bun run dev
 Scrape a channel:
 
 ```bash
-curl -X POST http://localhost:3000/api/youtube/scrape-channel \
+curl -X POST http://localhost:3100/api/youtube/scrape-channel \
   -H "Content-Type: application/json" \
   -d '{"channelUrl": "https://www.youtube.com/@starterstory", "maxVideos": 30}'
 ```
@@ -90,7 +90,7 @@ bun run scripts/backfill-graph.ts
 | `/api/knowledge/stats` | GET | Live node counts (graph) + chunk count (vector) |
 
 ```bash
-curl -X POST http://localhost:3000/api/knowledge/ask \
+curl -X POST http://localhost:3100/api/knowledge/ask \
   -H "Content-Type: application/json" \
   -d '{"question": "How do solo technical founders get their first customers for a SaaS?"}'
 ```
@@ -99,7 +99,7 @@ Response shape: `{ answer, context, patterns, examples, sources, synthesized }` 
 
 ### Query Explorer (visualize retrieval)
 
-Open **http://localhost:3000/explorer** — a built-in UI that runs `/api/knowledge/ask` and visualizes the full pipeline per query:
+Open **http://localhost:3100/explorer** — a built-in UI that runs `/api/knowledge/ask` and visualizes the full pipeline per query:
 
 - Stage cards with live status: context extraction (LLM vs heuristic), pattern layer (Redis cache HIT/miss), graph multi-hop, vector search, synthesis
 - Stage timing bars (where the milliseconds go)

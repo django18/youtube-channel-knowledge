@@ -132,7 +132,10 @@ export async function storeInVectorDB(
   console.log('Storing in ChromaDB...');
 
   try {
-    await coll.add({
+    // upsert (not add): chunk IDs are deterministic (videoId_chunk_N),
+    // so re-ingesting a video overwrites instead of throwing on
+    // duplicate IDs.
+    await coll.upsert({
       ids,
       embeddings,
       documents,
