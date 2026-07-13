@@ -6,13 +6,14 @@ import OpenAI from 'openai';
  * model names differ.
  *
  * Provider resolution (first match wins):
- *   1. LLM_PROVIDER env ('xai' | 'openai')
- *   2. XAI_API_KEY set → xai
- *   3. otherwise → openai
+ *   1. LLM_PROVIDER env ('gemini' | 'xai' | 'openai')
+ *   2. GEMINI_API_KEY set → gemini
+ *   3. XAI_API_KEY set → xai
+ *   4. otherwise → openai
  *
  * Model overrides: LLM_SYNTHESIS_MODEL, LLM_EXTRACTION_MODEL.
  */
-export type LLMProvider = 'xai' | 'openai';
+export type LLMProvider = 'gemini' | 'xai' | 'openai';
 
 interface ProviderDefaults {
   baseURL?: string;
@@ -22,6 +23,15 @@ interface ProviderDefaults {
 }
 
 const PROVIDERS: Record<LLMProvider, ProviderDefaults> = {
+  gemini: {
+    // Google's OpenAI-compatible endpoint
+    baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
+    apiKeyEnv: 'GEMINI_API_KEY',
+    // 2.5-flash: fast, cheap, generous free tier, solid JSON mode.
+    // Override LLM_SYNTHESIS_MODEL=gemini-2.5-pro for deeper answers.
+    extractionModel: 'gemini-2.5-flash',
+    synthesisModel: 'gemini-2.5-flash',
+  },
   xai: {
     baseURL: 'https://api.x.ai/v1',
     apiKeyEnv: 'XAI_API_KEY',
@@ -39,7 +49,10 @@ const PROVIDERS: Record<LLMProvider, ProviderDefaults> = {
 
 export function resolveProvider(): LLMProvider {
   const explicit = process.env.LLM_PROVIDER;
-  if (explicit === 'xai' || explicit === 'openai') return explicit;
+  if (explicit === 'gemini' || explicit === 'xai' || explicit === 'openai') {
+    return explicit;
+  }
+  if (process.env.GEMINI_API_KEY) return 'gemini';
   if (process.env.XAI_API_KEY) return 'xai';
   return 'openai';
 }
