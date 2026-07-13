@@ -2,7 +2,7 @@ import { PlaybookSchema, type Playbook } from '../schemas/knowledge';
 import { synthesizeKnowledge, type SynthesisRequest } from './synthesizer';
 import { validatePlaybookEvidence } from './evidence-validator';
 import { v4 as uuidv4 } from 'uuid';
-import { getLLM, llmModels } from '../llm';
+import { getLLM, llmModels, stripReasoning, reasoningRequestOverrides } from '../llm';
 
 /**
  * The Guide Generator takes synthesized knowledge and transforms it
@@ -44,6 +44,7 @@ export async function generatePlaybook(request: SynthesisRequest): Promise<Playb
     messages: [{ role: 'user', content: prompt }],
     response_format: { type: 'json_object' },
     temperature: 0.2,
+    ...reasoningRequestOverrides(llmModels().synthesis),
   });
 
   const content = response.choices[0]?.message?.content;
@@ -51,8 +52,9 @@ export async function generatePlaybook(request: SynthesisRequest): Promise<Playb
     throw new Error('No response from OpenAI for Playbook generation');
   }
 
-  // Parse and validate against schema
-  const rawPlaybook = JSON.parse(content);
+  // Parse and validate against schema (reasoning models may prefix
+  // <think> blocks — strip before JSON.parse)
+  const rawPlaybook = JSON.parse(stripReasoning(content));
   
   // Ensure IDs and metadata are set
   const playbook = PlaybookSchema.parse({

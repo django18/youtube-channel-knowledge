@@ -92,6 +92,35 @@ export function llmModels(): LLMModels {
   };
 }
 
+/**
+ * Reasoning models (qwen3, deepseek-r1, …) emit their chain of thought
+ * inside <think>…</think> before the answer. Strip it so downstream
+ * consumers (API responses, JSON.parse) only see the final answer.
+ */
+export function stripReasoning(text: string): string {
+  const closed = text.replace(/<think>[\s\S]*?<\/think>/g, '');
+  // A completion truncated mid-reasoning has an unclosed <think> — drop
+  // everything from it onward rather than returning raw chain of thought.
+  return closed.replace(/<think>[\s\S]*$/, '').trim();
+}
+
+/**
+ * Extra request params for reasoning models. On Groq, qwen3/deepseek-r1
+ * emit <think> blocks into content by default and burn the default
+ * 2048-token completion cap on reasoning; hide the reasoning server-side
+ * and raise the cap so the final answer survives.
+ */
+export function reasoningRequestOverrides(model: string): Record<string, unknown> {
+  const isReasoningModel = /qwen3|deepseek-r1|qwq/i.test(model);
+  if (resolveProvider() === 'groq' && isReasoningModel) {
+    // max_tokens counts against Groq's free-tier 8K tokens-per-minute
+    // check (prompt + max_tokens ≤ 8000), so keep headroom for ~2-3K
+    // prompt tokens.
+    return { reasoning_format: 'hidden', max_tokens: 4096 };
+  }
+  return {};
+}
+
 let client: OpenAI | null = null;
 let clientProvider: LLMProvider | null = null;
 

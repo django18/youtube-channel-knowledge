@@ -4,7 +4,7 @@ import { searchVectorDB, type SearchResult } from '../youtube-vectorstore';
 import { getPatterns, type ContextPatterns } from '../patterns/pattern-layer';
 import { extractQueryContextDetailed } from './context-extractor';
 import { QueryContextSchema, type QueryContext } from '../schemas/context';
-import { getLLM, hasLLM, llmModels } from '../llm';
+import { getLLM, hasLLM, llmModels, stripReasoning, reasoningRequestOverrides } from '../llm';
 
 export interface TraceStage {
   stage: string;
@@ -331,6 +331,7 @@ TASK: Answer the question with:
           { role: 'user', content: userPrompt },
         ],
         temperature: 0.3,
+        ...reasoningRequestOverrides(llmModels().synthesis),
       })
     );
     const response = synthesisTimed.result;
@@ -350,7 +351,7 @@ TASK: Answer the question with:
     return {
       question,
       context,
-      answer: response.choices[0]?.message?.content ?? null,
+      answer: stripReasoning(response.choices[0]?.message?.content ?? ''),
       patterns,
       examples,
       sources,

@@ -1,6 +1,6 @@
 import { getNeo4jDriver } from './graph-store';
 import { searchVectorDB, type SearchResult } from '../youtube-vectorstore';
-import { getLLM, hasLLM, llmModels } from '../llm';
+import { getLLM, hasLLM, llmModels, stripReasoning, reasoningRequestOverrides } from '../llm';
 
 export interface SynthesisRequest {
   profile: string; // e.g. "Solo Technical Founder"
@@ -154,13 +154,14 @@ export async function synthesizeKnowledge(
       model: llmModels().synthesis,
       messages: [{ role: 'user', content: synthesisPrompt }],
       temperature: 0.3,
+      ...reasoningRequestOverrides(llmModels().synthesis),
     });
 
     return {
       profile: request.profile,
       patterns,
       workflows,
-      synthesizedInsights: response.choices[0]?.message?.content ?? null,
+      synthesizedInsights: stripReasoning(response.choices[0]?.message?.content ?? ''),
       sourceContextCount: semanticResults.length,
     };
   } finally {
