@@ -97,6 +97,35 @@ curl -X POST http://localhost:3000/api/knowledge/ask \
 
 Response shape: `{ answer, context, patterns, examples, sources, synthesized }` — every example is a real founder from the graph, every source a transcript excerpt with timestamp. Without `OPENAI_API_KEY`, returns raw retrieval (patterns + examples + sources) with `synthesized: false`.
 
+### Query Explorer (visualize retrieval)
+
+Open **http://localhost:3000/explorer** — a built-in UI that runs `/api/knowledge/ask` and visualizes the full pipeline per query:
+
+- Stage cards with live status: context extraction (LLM vs heuristic), pattern layer (Redis cache HIT/miss), graph multi-hop, vector search, synthesis
+- Stage timing bars (where the milliseconds go)
+- Strategy usage/success-rate bars, tool frequency chips
+- Founder example cards from the graph with outcomes and video links
+- Semantic sources with cosine-similarity bars and timestamps
+- Raw response JSON toggle
+
+Every `/ask` response also includes a `trace` object (`stages[]` with `ms`, `status`, `detail`) so you can instrument programmatically.
+
+For raw graph exploration, Neo4j Browser runs at **http://localhost:7474** (`neo4j`/`password`). Useful queries:
+
+```cypher
+// The whole schema
+CALL db.schema.visualization()
+
+// What did a specific startup do?
+MATCH (f:Founder)-[:FOUNDED]->(s:Startup)-[r]->(x)
+WHERE s.name CONTAINS 'name here'
+RETURN f, s, x LIMIT 50
+
+// Top strategies among solo founders
+MATCH (f:Founder {type:'solo'})-[:FOUNDED]->(:Startup)-[r:IMPLEMENTED_STRATEGY]->(st:Strategy)
+RETURN st.name, count(r) AS uses ORDER BY uses DESC LIMIT 10
+```
+
 ### YouTube ingestion
 
 | Endpoint | Method | Purpose |

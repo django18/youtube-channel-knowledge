@@ -23,8 +23,25 @@ Do not guess. Only include fields with clear evidence in the question.`;
  * call fails, so /api/ask degrades instead of erroring.
  */
 export async function extractQueryContext(question: string): Promise<QueryContext> {
+  const { context } = await extractQueryContextDetailed(question);
+  return context;
+}
+
+export interface ContextExtractionResult {
+  context: QueryContext;
+  method: 'llm' | 'heuristic';
+}
+
+/**
+ * Same as extractQueryContext but reports which method actually produced
+ * the context — used by the query trace so the explorer shows the truth
+ * (LLM vs heuristic fallback), not an assumption.
+ */
+export async function extractQueryContextDetailed(
+  question: string
+): Promise<ContextExtractionResult> {
   if (!process.env.OPENAI_API_KEY) {
-    return heuristicContext(question);
+    return { context: heuristicContext(question), method: 'heuristic' };
   }
 
   try {
@@ -42,10 +59,13 @@ export async function extractQueryContext(question: string): Promise<QueryContex
       throw new Error('Empty response from context extraction');
     }
 
-    return QueryContextSchema.parse(JSON.parse(content));
+    return {
+      context: QueryContextSchema.parse(JSON.parse(content)),
+      method: 'llm',
+    };
   } catch (error) {
     console.warn('LLM context extraction failed, using heuristics:', error);
-    return heuristicContext(question);
+    return { context: heuristicContext(question), method: 'heuristic' };
   }
 }
 

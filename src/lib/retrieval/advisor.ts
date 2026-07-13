@@ -2,9 +2,27 @@ import { int as neo4jInt } from 'neo4j-driver';
 import { getNeo4jDriver } from '../extraction/graph-store';
 import { searchVectorDB, type SearchResult } from '../youtube-vectorstore';
 import { getPatterns, type ContextPatterns } from '../patterns/pattern-layer';
-import { extractQueryContext } from './context-extractor';
+import { extractQueryContextDetailed } from './context-extractor';
 import { QueryContextSchema, type QueryContext } from '../schemas/context';
-import { getOpenAI } from '../openai';
+import { getOpenAI, hasOpenAI } from '../openai';
+
+export interface TraceStage {
+  stage: string;
+  ms: number;
+  status: 'ok' | 'failed' | 'skipped';
+  detail: Record<string, unknown>;
+}
+
+export interface QueryTrace {
+  totalMs: number;
+  stages: TraceStage[];
+}
+
+async function timed<T>(fn: () => Promise<T>): Promise<{ result: T; ms: number }> {
+  const start = performance.now();
+  const result = await fn();
+  return { result, ms: Math.round(performance.now() - start) };
+}
 
 export interface FounderExample {
   founder: string;
@@ -36,6 +54,7 @@ export interface AdvisorAnswer {
     similarity: number;
   }>;
   synthesized: boolean;
+  trace: QueryTrace;
 }
 
 /**
@@ -147,33 +166,106 @@ export async function ask(
   question: string,
   explicitContext?: unknown
 ): Promise<AdvisorAnswer> {
-  const context = explicitContext
-    ? QueryContextSchema.parse(explicitContext)
-    : await extractQueryContext(question);
+  const askStart = performance.now();
+  const stages: TraceStage[] = [];
 
-  const [patterns, examples, vectorResults] = await Promise.all([
-    getPatterns(context).catch((error): ContextPatterns => {
-      console.warn('Pattern lookup failed:', error);
+  // Stage 1: context extraction
+  const contextTimed = await timed(async () => {
+    if (explicitContext) {
       return {
-        context,
-        cacheKey: 'unavailable',
-        topStrategies: [],
-        topTools: [],
-        workflows: [],
-        outcomes: { founderCount: 0, avgMrr: null, avgUsers: null },
-        computedAt: new Date().toISOString(),
-        fromCache: false,
+        context: QueryContextSchema.parse(explicitContext),
+        method: 'explicit' as const,
       };
+    }
+    return extractQueryContextDetailed(question);
+  });
+  const { context, method: contextMethod } = contextTimed.result;
+  stages.push({
+    stage: 'context-extraction',
+    ms: contextTimed.ms,
+    status: 'ok',
+    detail: { method: contextMethod, context },
+  });
+
+  // Stages 2-4 run in parallel: pattern layer, graph multi-hop, vector search
+  const [patternsLeg, examplesLeg, vectorLeg] = await Promise.all([
+    timed(async () => {
+      try {
+        return { value: await getPatterns(context), failed: false };
+      } catch (error) {
+        console.warn('Pattern lookup failed:', error);
+        const empty: ContextPatterns = {
+          context,
+          cacheKey: 'unavailable',
+          topStrategies: [],
+          topTools: [],
+          workflows: [],
+          outcomes: { founderCount: 0, avgMrr: null, avgUsers: null },
+          computedAt: new Date().toISOString(),
+          fromCache: false,
+        };
+        return { value: empty, failed: true };
+      }
     }),
-    findSimilarFounders(context).catch((error): FounderExample[] => {
-      console.warn('Graph example lookup failed:', error);
-      return [];
+    timed(async () => {
+      try {
+        return { value: await findSimilarFounders(context), failed: false };
+      } catch (error) {
+        console.warn('Graph example lookup failed:', error);
+        return { value: [] as FounderExample[], failed: true };
+      }
     }),
-    searchVectorDB(question, 8).catch((error): SearchResult[] => {
-      console.warn('Vector search failed:', error);
-      return [];
+    timed(async () => {
+      try {
+        return { value: await searchVectorDB(question, 8), failed: false };
+      } catch (error) {
+        console.warn('Vector search failed:', error);
+        return { value: [] as SearchResult[], failed: true };
+      }
     }),
   ]);
+
+  const patterns = patternsLeg.result.value;
+  const examples = examplesLeg.result.value;
+  const vectorResults = vectorLeg.result.value;
+
+  stages.push({
+    stage: 'pattern-layer',
+    ms: patternsLeg.ms,
+    status: patternsLeg.result.failed ? 'failed' : 'ok',
+    detail: {
+      fromCache: patterns.fromCache,
+      cacheKey: patterns.cacheKey,
+      strategies: patterns.topStrategies.length,
+      tools: patterns.topTools.length,
+      workflows: patterns.workflows.length,
+      foundersWithOutcomes: patterns.outcomes.founderCount,
+    },
+  });
+  stages.push({
+    stage: 'graph-examples',
+    ms: examplesLeg.ms,
+    status: examplesLeg.result.failed ? 'failed' : 'ok',
+    detail: {
+      founders: examples.length,
+      hops: 'Founder → Startup → Strategy/Tool → Outcome → Video',
+    },
+  });
+  const similarities = vectorResults.map(r => r.similarity);
+  stages.push({
+    stage: 'vector-search',
+    ms: vectorLeg.ms,
+    status: vectorLeg.result.failed ? 'failed' : 'ok',
+    detail: {
+      chunks: vectorResults.length,
+      topSimilarity: similarities.length > 0 ? Math.max(...similarities) : null,
+      avgSimilarity:
+        similarities.length > 0
+          ? similarities.reduce((a, b) => a + b, 0) / similarities.length
+          : null,
+      embedder: 'MiniLM-L6-v2 (384-dim, cosine)',
+    },
+  });
 
   const sources = vectorResults.map(result => ({
     videoTitle: result.videoTitle,
@@ -183,7 +275,13 @@ export async function ask(
     similarity: result.similarity,
   }));
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!hasOpenAI()) {
+    stages.push({
+      stage: 'synthesis',
+      ms: 0,
+      status: 'skipped',
+      detail: { reason: 'OPENAI_API_KEY not set — raw retrieval returned' },
+    });
     return {
       question,
       context,
@@ -192,6 +290,7 @@ export async function ask(
       examples,
       sources,
       synthesized: false,
+      trace: { totalMs: Math.round(performance.now() - askStart), stages },
     };
   }
 
@@ -224,13 +323,28 @@ TASK: Answer the question with:
 4. Realistic timeline expectations based on the outcomes data`;
 
   try {
-    const response = await getOpenAI().chat.completions.create({
-      model: 'gpt-4o',
-      messages: [
-        { role: 'system', content: SYNTHESIS_SYSTEM_PROMPT },
-        { role: 'user', content: userPrompt },
-      ],
-      temperature: 0.3,
+    const synthesisTimed = await timed(() =>
+      getOpenAI().chat.completions.create({
+        model: 'gpt-4o',
+        messages: [
+          { role: 'system', content: SYNTHESIS_SYSTEM_PROMPT },
+          { role: 'user', content: userPrompt },
+        ],
+        temperature: 0.3,
+      })
+    );
+    const response = synthesisTimed.result;
+
+    stages.push({
+      stage: 'synthesis',
+      ms: synthesisTimed.ms,
+      status: 'ok',
+      detail: {
+        model: 'gpt-4o',
+        promptChars: userPrompt.length,
+        promptTokens: response.usage?.prompt_tokens ?? null,
+        completionTokens: response.usage?.completion_tokens ?? null,
+      },
     });
 
     return {
@@ -241,9 +355,16 @@ TASK: Answer the question with:
       examples,
       sources,
       synthesized: true,
+      trace: { totalMs: Math.round(performance.now() - askStart), stages },
     };
   } catch (error) {
     console.error('Advisor synthesis failed, returning raw retrieval:', error);
+    stages.push({
+      stage: 'synthesis',
+      ms: 0,
+      status: 'failed',
+      detail: { error: error instanceof Error ? error.message : String(error) },
+    });
     return {
       question,
       context,
@@ -252,6 +373,7 @@ TASK: Answer the question with:
       examples,
       sources,
       synthesized: false,
+      trace: { totalMs: Math.round(performance.now() - askStart), stages },
     };
   }
 }

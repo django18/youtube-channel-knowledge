@@ -9,7 +9,13 @@ export function getNeo4jDriver(): Driver {
   if (!driver) {
     driver = neo4j.driver(
       config.neo4jUri,
-      neo4j.auth.basic(config.neo4jUser, config.neo4jPassword)
+      neo4j.auth.basic(config.neo4jUser, config.neo4jPassword),
+      {
+        // Fail fast when Neo4j is down so degraded /ask responses take
+        // seconds, not the driver's 30s default connect timeout.
+        connectionTimeout: 5_000,
+        connectionAcquisitionTimeout: 10_000,
+      }
     );
   }
   return driver;

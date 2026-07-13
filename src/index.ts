@@ -4,6 +4,7 @@ import { logger } from 'hono/logger';
 import youtubeRouter from './routes/youtube';
 import knowledgeRouter from './routes/knowledge';
 import evalRouter from './routes/eval';
+import explorerRouter from './routes/explorer';
 import { config } from './config';
 import { startWorker } from './lib/queue/worker';
 import { initGraph } from './lib/extraction/graph-store';
@@ -40,6 +41,9 @@ app.get('/', (c) =>
         latest: 'GET /api/eval/latest',
         history: 'GET /api/eval/history',
       },
+      ui: {
+        explorer: 'GET /explorer',
+      },
     },
   })
 );
@@ -51,6 +55,7 @@ app.get('/health', (c) =>
 app.route('/api', youtubeRouter);
 app.route('/api/knowledge', knowledgeRouter);
 app.route('/api/eval', evalRouter);
+app.route('/explorer', explorerRouter);
 
 console.log(`🚀 Server starting on port ${config.port}`);
 console.log(`📊 ChromaDB URL: ${config.chromaUrl}`);
