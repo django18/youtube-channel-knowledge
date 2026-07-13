@@ -268,7 +268,13 @@ async function fetchContinuationPage(
     throw new Error(`Failed to fetch continuation: ${response.status}`);
   }
 
-  const data = await response.json();
+  const data = (await response.json()) as {
+    onResponseReceivedActions?: Array<{
+      appendContinuationItemsAction?: {
+        continuationItems?: any[];
+      };
+    }>;
+  };
   const videos: ChannelVideo[] = [];
   let nextContinuationToken: string | null = null;
 

@@ -1,12 +1,8 @@
-import OpenAI from 'openai';
 import { ExtractedEntitiesSchema, type ExtractedEntities } from '../schemas/entities';
 import { buildExtractionPrompt } from './prompts';
 import type { VideoTranscript } from './chroma-reader';
 import { saveToGraph } from './graph-store';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { getOpenAI } from '../openai';
 
 export interface ExtractionResult {
   success: boolean;
@@ -36,7 +32,7 @@ export async function extractEntities(
     try {
       const prompt = buildExtractionPrompt(transcript.fullTranscript);
 
-      const response = await openai.chat.completions.create({
+      const response = await getOpenAI().chat.completions.create({
         model,
         messages: [
           {
@@ -66,6 +62,10 @@ export async function extractEntities(
 
       // Validate against schema
       const entities = ExtractedEntitiesSchema.parse(dataWithMetadata);
+
+      // Persist to Neo4j (atomic per video). Failure here retries the
+      // whole extraction attempt so vector/graph stores never diverge.
+      await saveToGraph(entities);
 
       console.log(`✓ Successfully extracted entities from: ${transcript.videoTitle}`);
 
@@ -146,6 +146,12 @@ export async function extractEntitiesBatch(
   const successful = results.filter(r => r.success).length;
   const failed = results.filter(r => !r.success).length;
   const totalTokens = results.reduce((sum, r) => sum + (r.tokensUsed || 0), 0);
+
+  if (successful > 0) {
+    // Graph changed — cached patterns are stale.
+    const { invalidatePatternCache } = await import('../patterns/pattern-layer');
+    await invalidatePatternCache();
+  }
 
   console.log(`\n✓ Batch extraction complete:`);
   console.log(`  - Successful: ${successful}`);

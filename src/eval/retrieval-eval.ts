@@ -1,4 +1,4 @@
-import { ChromaClient, Collection } from 'chromadb';
+import { ChromaClient, Collection, IncludeEnum } from 'chromadb';
 import { pipeline } from '@xenova/transformers';
 import { config } from '../config';
 import { mean, ndcgAtK, percentile, precisionAtK, recallAtK, reciprocalRank } from './metrics';
@@ -59,7 +59,7 @@ export async function evaluateRetrieval(cases: EvalCase[]): Promise<RetrievalMet
     const res = await c.query({
       queryEmbeddings: [qEmb],
       nResults: TOP_K,
-      include: ['metadatas', 'distances'],
+      include: [IncludeEnum.Metadatas, IncludeEnum.Distances],
     });
     const latencyMs = performance.now() - t0;
     latencies.push(latencyMs);

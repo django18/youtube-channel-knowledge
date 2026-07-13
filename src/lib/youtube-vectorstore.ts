@@ -1,4 +1,4 @@
-import { ChromaClient, Collection } from 'chromadb';
+import { ChromaClient, Collection, IncludeEnum } from 'chromadb';
 import { pipeline } from '@xenova/transformers';
 import { config } from '../config';
 import type { ProcessedTranscript, TranscriptChunk } from './youtube';
@@ -180,7 +180,7 @@ export async function searchVectorDB(
   const results = await coll.query({
     queryEmbeddings: [queryEmbedding],
     nResults: limit,
-    include: ['documents', 'metadatas', 'distances'],
+    include: [IncludeEnum.Documents, IncludeEnum.Metadatas, IncludeEnum.Distances],
   });
 
   const searchResults: SearchResult[] = [];

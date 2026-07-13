@@ -37,8 +37,8 @@ export class JinaEmbeddings implements EmbeddingProvider {
       throw new Error(`Jina API error: ${response.status} ${await response.text()}`);
     }
 
-    const data = await response.json();
-    return data.data.map((item: any) => item.embedding);
+    const data = (await response.json()) as { data: Array<{ embedding: number[] }> };
+    return data.data.map((item) => item.embedding);
   }
 
   async embedQuery(text: string): Promise<number[]> {

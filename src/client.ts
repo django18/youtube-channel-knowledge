@@ -99,11 +99,11 @@ export class YouTubeTranscriptClient implements YouTubeClient {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = (await response.json()) as { message?: string };
       throw new Error(`Failed to scrape video: ${error.message}`);
     }
 
-    return response.json();
+    return response.json() as Promise<VideoResult>;
   }
 
   async scrapeChannel(
@@ -119,11 +119,11 @@ export class YouTubeTranscriptClient implements YouTubeClient {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = (await response.json()) as { message?: string };
       throw new Error(`Failed to scrape channel: ${error.message}`);
     }
 
-    return response.json();
+    return response.json() as Promise<ChannelResult>;
   }
 
   async search(query: string, limit: number = 5): Promise<SearchResult> {
@@ -134,11 +134,11 @@ export class YouTubeTranscriptClient implements YouTubeClient {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = (await response.json()) as { message?: string };
       throw new Error(`Search failed: ${error.message}`);
     }
 
-    return response.json();
+    return response.json() as Promise<SearchResult>;
   }
 
   async chat(question: string, contextLimit: number = 3): Promise<ChatResult> {
@@ -149,22 +149,22 @@ export class YouTubeTranscriptClient implements YouTubeClient {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = (await response.json()) as { message?: string };
       throw new Error(`Chat failed: ${error.message}`);
     }
 
-    return response.json();
+    return response.json() as Promise<ChatResult>;
   }
 
   async getStats(): Promise<StatsResult> {
     const response = await fetch(`${this.baseUrl}/youtube/stats`);
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = (await response.json()) as { message?: string };
       throw new Error(`Failed to get stats: ${error.message}`);
     }
 
-    return response.json();
+    return response.json() as Promise<StatsResult>;
   }
 }
 

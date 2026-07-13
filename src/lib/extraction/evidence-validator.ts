@@ -1,6 +1,14 @@
-import { ChromaClient } from 'chromadb';
+import { ChromaClient, IncludeEnum, type IEmbeddingFunction } from 'chromadb';
 import { config } from '../../config';
 import type { Playbook, Evidence } from '../schemas/knowledge';
+
+// This validation path only fetches by metadata (.get()), never embeds queries,
+// so a no-op embedding function satisfies the type without being used.
+const noopEmbeddingFunction: IEmbeddingFunction = {
+  generate: async () => {
+    throw new Error('noopEmbeddingFunction should never be called for read-only get() paths');
+  },
+};
 
 /**
  * Validates that the evidence cited in a playbook actually exists in ChromaDB.
@@ -8,7 +16,10 @@ import type { Playbook, Evidence } from '../schemas/knowledge';
  */
 export async function validatePlaybookEvidence(playbook: Playbook): Promise<Playbook> {
   const client = new ChromaClient({ path: config.chromaUrl });
-  const collection = await client.getCollection({ name: config.youtubeCollectionName });
+  const collection = await client.getCollection({
+    name: config.youtubeCollectionName,
+    embeddingFunction: noopEmbeddingFunction,
+  });
 
   console.log(`\n🔍 Validating evidence for playbook: ${playbook.title}`);
 
@@ -22,7 +33,7 @@ export async function validatePlaybookEvidence(playbook: Playbook): Promise<Play
           // We search for the quote within the specific video
           const results = await collection.get({
             where: { videoId: evidence.videoId },
-            include: ['documents'],
+            include: [IncludeEnum.Documents],
           });
 
           const chunkTexts = results.documents || [];

@@ -1,11 +1,8 @@
-import OpenAI from 'openai';
 import { PlaybookSchema, type Playbook } from '../schemas/knowledge';
 import { synthesizeKnowledge, type SynthesisRequest } from './synthesizer';
+import { validatePlaybookEvidence } from './evidence-validator';
 import { v4 as uuidv4 } from 'uuid';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { getOpenAI } from '../openai';
 
 /**
  * The Guide Generator takes synthesized knowledge and transforms it
@@ -42,7 +39,7 @@ export async function generatePlaybook(request: SynthesisRequest): Promise<Playb
     The JSON should have: id, title, description, targetAudience, modules, summary, and metadata.
   `;
 
-  const response = await openai.chat.completions.create({
+  const response = await getOpenAI().chat.completions.create({
     model: 'gpt-4o',
     messages: [{ role: 'user', content: prompt }],
     response_format: { type: 'json_object' },

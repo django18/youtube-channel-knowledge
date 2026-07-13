@@ -1,5 +1,13 @@
-import { ChromaClient } from 'chromadb';
+import { ChromaClient, IncludeEnum, type IEmbeddingFunction } from 'chromadb';
 import { config } from '../../config';
+
+// These read paths only fetch by metadata (.get()), never embed queries,
+// so a no-op embedding function satisfies the type without being used.
+const noopEmbeddingFunction: IEmbeddingFunction = {
+  generate: async () => {
+    throw new Error('noopEmbeddingFunction should never be called for read-only get() paths');
+  },
+};
 
 export interface VideoTranscript {
   videoId: string;
@@ -20,13 +28,14 @@ export async function readTranscriptsFromChroma(): Promise<VideoTranscript[]> {
 
   const collection = await client.getCollection({
     name: config.youtubeCollectionName,
+    embeddingFunction: noopEmbeddingFunction,
   });
 
   console.log('Reading all chunks from ChromaDB...');
 
   // Get all documents from the collection
   const results = await collection.get({
-    include: ['documents', 'metadatas'],
+    include: [IncludeEnum.Documents, IncludeEnum.Metadatas],
   });
 
   if (!results.ids || results.ids.length === 0) {
@@ -107,6 +116,7 @@ export async function readSingleTranscript(videoId: string): Promise<VideoTransc
 
   const collection = await client.getCollection({
     name: config.youtubeCollectionName,
+    embeddingFunction: noopEmbeddingFunction,
   });
 
   console.log(`Reading transcript for video: ${videoId}`);
@@ -114,7 +124,7 @@ export async function readSingleTranscript(videoId: string): Promise<VideoTransc
   // Query for this video's chunks
   const results = await collection.get({
     where: { videoId },
-    include: ['documents', 'metadatas'],
+    include: [IncludeEnum.Documents, IncludeEnum.Metadatas],
   });
 
   if (!results.ids || results.ids.length === 0) {

@@ -84,7 +84,7 @@ export type Playbook = z.infer<typeof PlaybookSchema>;
 export const GraphNodeSchema = z.object({
   id: z.string(),
   label: z.enum(['Founder', 'Startup', 'Tool', 'Strategy', 'Outcome', 'Video']),
-  properties: z.record(z.any()),
+  properties: z.record(z.string(), z.any()),
 });
 
 export const GraphRelationshipSchema = z.object({
@@ -99,5 +99,5 @@ export const GraphRelationshipSchema = z.object({
   ]),
   fromId: z.string(),
   toId: z.string(),
-  properties: z.record(z.any()).optional(),
+  properties: z.record(z.string(), z.any()).optional(),
 });

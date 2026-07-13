@@ -1,5 +1,5 @@
-import { getNeo4jDriver } from '../extraction/graph-store';
-import { ChromaClient } from 'chromadb';
+import { getNeo4jDriver } from '../lib/extraction/graph-store';
+import { ChromaClient, IncludeEnum } from 'chromadb';
 import { pipeline } from '@xenova/transformers';
 import { config } from '../config';
 import { mean, normalize, setPrecision, setRecall } from './metrics';
@@ -66,7 +66,7 @@ export async function evaluateGraph(cases: EvalCase[]): Promise<GraphMetrics | n
       const res = await coll.query({
         queryEmbeddings: [qEmb],
         nResults: 20,
-        include: ['metadatas'],
+        include: [IncludeEnum.Metadatas],
       });
 
       const videoIds = Array.from(

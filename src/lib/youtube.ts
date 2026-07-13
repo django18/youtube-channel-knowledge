@@ -134,7 +134,11 @@ export async function fetchVideoMetadata(
       throw new Error(`oEmbed API returned ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as {
+      title?: string;
+      author_name?: string;
+      thumbnail_url?: string;
+    };
 
     return {
       videoId,

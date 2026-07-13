@@ -22,6 +22,19 @@ export const config = {
   neo4jUser: process.env.NEO4J_USER || 'neo4j',
   neo4jPassword: process.env.NEO4J_PASSWORD || 'password',
 
+  // Redis
+  redisUrl: process.env.REDIS_URL || 'redis://localhost:6379',
+
+  // Security
+  // If API_KEY is set, all /api/* routes require the `x-api-key` header.
+  // Leave unset for local development (no auth).
+  apiKey: process.env.API_KEY || '',
+  rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000'),
+  rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX || '60'),
+
+  // Pattern layer cache (seconds). Default 6h.
+  patternCacheTtlSeconds: parseInt(process.env.PATTERN_CACHE_TTL_SECONDS || '21600'),
+
   // Eval
   evalOutputDir: process.env.EVAL_OUTPUT_DIR || './eval/results',
   evalGoldenPath: process.env.EVAL_GOLDEN_PATH || './eval/golden.jsonl',

@@ -7,11 +7,14 @@ import evalRouter from './routes/eval';
 import { config } from './config';
 import { startWorker } from './lib/queue/worker';
 import { initGraph } from './lib/extraction/graph-store';
+import { apiKeyAuth, rateLimit } from './middleware/security';
 
 const app = new Hono();
 
 app.use('*', cors());
 app.use('*', logger());
+app.use('/api/*', rateLimit());
+app.use('/api/*', apiKeyAuth());
 
 app.get('/', (c) =>
   c.json({
@@ -27,6 +30,8 @@ app.get('/', (c) =>
         stats: 'GET /api/youtube/stats',
       },
       knowledge: {
+        ask: 'POST /api/knowledge/ask',
+        patterns: 'GET /api/knowledge/patterns',
         generatePlaybook: 'POST /api/knowledge/generate-playbook',
         stats: 'GET /api/knowledge/stats',
       },
