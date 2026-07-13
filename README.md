@@ -47,7 +47,7 @@ Retrieval (POST /api/knowledge/ask):
 | Vector DB | ChromaDB | Cosine similarity, 384-dim |
 | Graph DB | Neo4j + APOC | Multi-hop Cypher queries |
 | Cache/queue | Redis | Pattern cache + async job queue |
-| Extraction/synthesis | Gemini (gemini-2.5-flash), xAI Grok (grok-4-fast), or OpenAI (gpt-4o-mini / gpt-4o) | One OpenAI-compatible SDK, provider via env, Zod-validated output |
+| Extraction/synthesis | Groq (llama-3.3-70b), Gemini (gemini-2.5-flash), xAI Grok (grok-4-fast), or OpenAI (gpt-4o) | One OpenAI-compatible SDK, provider via env, Zod-validated output |
 | Validation | Zod | All external data + LLM output |
 
 ## Quick Start
@@ -57,7 +57,7 @@ Retrieval (POST /api/knowledge/ask):
 docker-compose up -d chromadb neo4j redis
 
 # 2. Configure
-cp .env.example .env   # add GEMINI_API_KEY / XAI_API_KEY / OPENAI_API_KEY for extraction/synthesis
+cp .env.example .env   # add GROQ_API_KEY / GEMINI_API_KEY / XAI_API_KEY / OPENAI_API_KEY for synthesis
 
 # 3. Install and run
 bun install

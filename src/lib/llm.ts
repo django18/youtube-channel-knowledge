@@ -6,14 +6,15 @@ import OpenAI from 'openai';
  * model names differ.
  *
  * Provider resolution (first match wins):
- *   1. LLM_PROVIDER env ('gemini' | 'xai' | 'openai')
- *   2. GEMINI_API_KEY set → gemini
- *   3. XAI_API_KEY set → xai
- *   4. otherwise → openai
+ *   1. LLM_PROVIDER env ('groq' | 'gemini' | 'xai' | 'openai')
+ *   2. GROQ_API_KEY set → groq
+ *   3. GEMINI_API_KEY set → gemini
+ *   4. XAI_API_KEY set → xai
+ *   5. otherwise → openai
  *
  * Model overrides: LLM_SYNTHESIS_MODEL, LLM_EXTRACTION_MODEL.
  */
-export type LLMProvider = 'gemini' | 'xai' | 'openai';
+export type LLMProvider = 'groq' | 'gemini' | 'xai' | 'openai';
 
 interface ProviderDefaults {
   baseURL?: string;
@@ -23,6 +24,14 @@ interface ProviderDefaults {
 }
 
 const PROVIDERS: Record<LLMProvider, ProviderDefaults> = {
+  groq: {
+    // Groq (LPU inference, not xAI's Grok). Fast open models, generous
+    // free tier (~30 req/min, ~1K req/day on llama-3.3-70b).
+    baseURL: 'https://api.groq.com/openai/v1',
+    apiKeyEnv: 'GROQ_API_KEY',
+    extractionModel: 'llama-3.3-70b-versatile',
+    synthesisModel: 'llama-3.3-70b-versatile',
+  },
   gemini: {
     // Google's OpenAI-compatible endpoint
     baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
@@ -49,9 +58,15 @@ const PROVIDERS: Record<LLMProvider, ProviderDefaults> = {
 
 export function resolveProvider(): LLMProvider {
   const explicit = process.env.LLM_PROVIDER;
-  if (explicit === 'gemini' || explicit === 'xai' || explicit === 'openai') {
+  if (
+    explicit === 'groq' ||
+    explicit === 'gemini' ||
+    explicit === 'xai' ||
+    explicit === 'openai'
+  ) {
     return explicit;
   }
+  if (process.env.GROQ_API_KEY) return 'groq';
   if (process.env.GEMINI_API_KEY) return 'gemini';
   if (process.env.XAI_API_KEY) return 'xai';
   return 'openai';
