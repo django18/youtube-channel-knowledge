@@ -57,9 +57,12 @@ async function main() {
     // This will trigger extractEntities which now includes saveToGraph()
     console.log('\n🧠 Starting extraction and graph ingestion...');
     
+    // Serial with generous delay: Gemini free tier allows ~10 req/min,
+    // and interactive /ask queries share the same quota. ~8/min leaves
+    // headroom. Script is resumable — already-graphed videos are skipped.
     await extractEntitiesBatch(pendingTranscripts, {
-      batchSize: 3, // Smaller batch size for backfill to avoid rate limits
-      delayMs: 2000,
+      batchSize: 1,
+      delayMs: 7000,
       onProgress: (current, total, title) => {
         const percent = Math.round((current / total) * 100);
         console.log(`[${percent}%] (${current}/${total}) Processed: ${title}`);

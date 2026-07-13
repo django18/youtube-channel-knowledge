@@ -78,12 +78,14 @@ export async function extractEntities(
 
     } catch (error: any) {
       lastError = error.message || String(error);
+      const isRateLimit = error?.status === 429 || /429|rate limit|quota/i.test(lastError);
       console.error(`Attempt ${attempt}/${maxRetries} failed for ${transcript.videoId}: ${lastError}`);
 
       if (attempt < maxRetries) {
-        // Wait before retry (exponential backoff)
-        const delay = Math.pow(2, attempt) * 1000;
-        console.log(`Retrying in ${delay}ms...`);
+        // Rate limits are per-minute windows — exponential ms backoff
+        // never clears them. Wait out the window instead.
+        const delay = isRateLimit ? 45_000 : Math.pow(2, attempt) * 1000;
+        console.log(`Retrying in ${delay}ms${isRateLimit ? ' (rate limit window)' : ''}...`);
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
