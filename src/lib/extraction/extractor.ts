@@ -2,7 +2,7 @@ import { ExtractedEntitiesSchema, type ExtractedEntities } from '../schemas/enti
 import { buildExtractionPrompt } from './prompts';
 import type { VideoTranscript } from './chroma-reader';
 import { saveToGraph } from './graph-store';
-import { getOpenAI } from '../openai';
+import { getLLM, llmModels } from '../llm';
 
 export interface ExtractionResult {
   success: boolean;
@@ -22,7 +22,7 @@ export async function extractEntities(
     maxRetries?: number;
   } = {}
 ): Promise<ExtractionResult> {
-  const { model = 'gpt-4o-mini', maxRetries = 3 } = options;
+  const { model = llmModels().extraction, maxRetries = 3 } = options;
 
   console.log(`Extracting entities from: ${transcript.videoTitle}`);
 
@@ -32,7 +32,7 @@ export async function extractEntities(
     try {
       const prompt = buildExtractionPrompt(transcript.fullTranscript);
 
-      const response = await getOpenAI().chat.completions.create({
+      const response = await getLLM().chat.completions.create({
         model,
         messages: [
           {

@@ -16,7 +16,7 @@
 import { ChromaClient } from 'chromadb';
 import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import OpenAI from 'openai';
+import { getLLM, hasLLM, llmModels } from '../src/lib/llm';
 import { config } from '../src/config';
 import { getNeo4jDriver } from '../src/lib/extraction/graph-store';
 import type { EvalCase } from '../src/eval/types';
@@ -35,7 +35,7 @@ function pickRandom<T>(arr: T[], n: number): T[] {
 
 async function generateQueriesForChunk(client: OpenAI, text: string): Promise<string[]> {
   const resp = await client.chat.completions.create({
-    model: process.env.OPENAI_MODEL ?? 'gpt-4o-mini',
+    model: process.env.LLM_EXTRACTION_MODEL ?? llmModels().extraction,
     messages: [
       {
         role: 'system',
@@ -86,11 +86,11 @@ async function getEntitiesForVideo(videoId: string) {
 }
 
 async function main() {
-  if (!process.env.OPENAI_API_KEY) {
-    console.error('OPENAI_API_KEY required for query generation. Aborting.');
+  if (!hasLLM()) {
+    console.error('LLM API key required (XAI_API_KEY or OPENAI_API_KEY). Aborting.');
     process.exit(1);
   }
-  const client = new OpenAI();
+  const client = getLLM();
 
   const chroma = new ChromaClient({ path: config.chromaUrl });
   const coll = await chroma.getOrCreateCollection({ name: config.youtubeCollectionName });

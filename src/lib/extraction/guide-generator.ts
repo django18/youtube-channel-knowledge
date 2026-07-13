@@ -2,7 +2,7 @@ import { PlaybookSchema, type Playbook } from '../schemas/knowledge';
 import { synthesizeKnowledge, type SynthesisRequest } from './synthesizer';
 import { validatePlaybookEvidence } from './evidence-validator';
 import { v4 as uuidv4 } from 'uuid';
-import { getOpenAI } from '../openai';
+import { getLLM, llmModels } from '../llm';
 
 /**
  * The Guide Generator takes synthesized knowledge and transforms it
@@ -39,8 +39,8 @@ export async function generatePlaybook(request: SynthesisRequest): Promise<Playb
     The JSON should have: id, title, description, targetAudience, modules, summary, and metadata.
   `;
 
-  const response = await getOpenAI().chat.completions.create({
-    model: 'gpt-4o',
+  const response = await getLLM().chat.completions.create({
+    model: llmModels().synthesis,
     messages: [{ role: 'user', content: prompt }],
     response_format: { type: 'json_object' },
     temperature: 0.2,
@@ -61,7 +61,7 @@ export async function generatePlaybook(request: SynthesisRequest): Promise<Playb
     metadata: {
       generatedAt: new Date().toISOString(),
       sourceVideoCount: synthesis.sourceContextCount,
-      model: 'gpt-4o',
+      model: llmModels().synthesis,
     }
   });
 

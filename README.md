@@ -47,7 +47,7 @@ Retrieval (POST /api/knowledge/ask):
 | Vector DB | ChromaDB | Cosine similarity, 384-dim |
 | Graph DB | Neo4j + APOC | Multi-hop Cypher queries |
 | Cache/queue | Redis | Pattern cache + async job queue |
-| Extraction/synthesis | OpenAI (gpt-4o-mini / gpt-4o) | Zod-validated structured output |
+| Extraction/synthesis | xAI Grok (grok-4-fast) or OpenAI (gpt-4o-mini / gpt-4o) | OpenAI-compatible SDK, provider via env, Zod-validated output |
 | Validation | Zod | All external data + LLM output |
 
 ## Quick Start
@@ -57,7 +57,7 @@ Retrieval (POST /api/knowledge/ask):
 docker-compose up -d chromadb neo4j redis
 
 # 2. Configure
-cp .env.example .env   # add OPENAI_API_KEY for extraction/synthesis
+cp .env.example .env   # add XAI_API_KEY (Grok) or OPENAI_API_KEY for extraction/synthesis
 
 # 3. Install and run
 bun install
@@ -72,7 +72,7 @@ curl -X POST http://localhost:3100/api/youtube/scrape-channel \
   -d '{"channelUrl": "https://www.youtube.com/@starterstory", "maxVideos": 30}'
 ```
 
-Backfill the graph from existing ChromaDB data (needs `OPENAI_API_KEY`):
+Backfill the graph from existing ChromaDB data (needs an LLM key):
 
 ```bash
 bun run scripts/backfill-graph.ts
@@ -95,7 +95,7 @@ curl -X POST http://localhost:3100/api/knowledge/ask \
   -d '{"question": "How do solo technical founders get their first customers for a SaaS?"}'
 ```
 
-Response shape: `{ answer, context, patterns, examples, sources, synthesized }` — every example is a real founder from the graph, every source a transcript excerpt with timestamp. Without `OPENAI_API_KEY`, returns raw retrieval (patterns + examples + sources) with `synthesized: false`.
+Response shape: `{ answer, context, patterns, examples, sources, synthesized }` — every example is a real founder from the graph, every source a transcript excerpt with timestamp. Without an LLM key, returns raw retrieval (patterns + examples + sources) with `synthesized: false`.
 
 ### Query Explorer (visualize retrieval)
 
@@ -154,11 +154,11 @@ CLI: `bun run eval` — measures embedding triplet accuracy, retrieval Recall@k/
 
 ## How Retrieval Works (GraphRAG)
 
-1. **Context extraction** — gpt-4o-mini pulls structured context from the question (`founderType`, `stage`, `startupType`, `budget`, `goal`). Keyword heuristics as fallback when no API key.
+1. **Context extraction** — the extraction model (grok-4-fast / gpt-4o-mini) pulls structured context from the question (`founderType`, `stage`, `startupType`, `budget`, `goal`). Keyword heuristics as fallback when no API key.
 2. **Pattern layer** — graph aggregates (top strategies with success rates, top tools, workflows, avg outcomes) per context, cached in Redis for 6h. Cache invalidated automatically after new extractions.
 3. **Multi-hop graph query** — `Founder → Startup → Strategy/Tool → Outcome → Video` chains for founders matching the context.
 4. **Semantic search** — ChromaDB for supporting quotes with timestamps.
-5. **Synthesis** — gpt-4o answers with the retrieved evidence only; system prompt forbids ungrounded claims.
+5. **Synthesis** — the synthesis model (grok-4-fast / gpt-4o) answers with the retrieved evidence only; system prompt forbids ungrounded claims.
 6. **Evidence validation** (playbooks) — every cited quote is checked against ChromaDB; hallucinated evidence flagged `[UNVERIFIED]`.
 
 Full design doc: [docs/GRAPHRAG_IMPLEMENTATION.md](docs/GRAPHRAG_IMPLEMENTATION.md).

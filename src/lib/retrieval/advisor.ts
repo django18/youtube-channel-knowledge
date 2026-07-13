@@ -4,7 +4,7 @@ import { searchVectorDB, type SearchResult } from '../youtube-vectorstore';
 import { getPatterns, type ContextPatterns } from '../patterns/pattern-layer';
 import { extractQueryContextDetailed } from './context-extractor';
 import { QueryContextSchema, type QueryContext } from '../schemas/context';
-import { getOpenAI, hasOpenAI } from '../openai';
+import { getLLM, hasLLM, llmModels } from '../llm';
 
 export interface TraceStage {
   stage: string;
@@ -275,12 +275,12 @@ export async function ask(
     similarity: result.similarity,
   }));
 
-  if (!hasOpenAI()) {
+  if (!hasLLM()) {
     stages.push({
       stage: 'synthesis',
       ms: 0,
       status: 'skipped',
-      detail: { reason: 'OPENAI_API_KEY not set — raw retrieval returned' },
+      detail: { reason: 'No LLM API key set (XAI_API_KEY / OPENAI_API_KEY) — raw retrieval returned' },
     });
     return {
       question,
@@ -324,8 +324,8 @@ TASK: Answer the question with:
 
   try {
     const synthesisTimed = await timed(() =>
-      getOpenAI().chat.completions.create({
-        model: 'gpt-4o',
+      getLLM().chat.completions.create({
+        model: llmModels().synthesis,
         messages: [
           { role: 'system', content: SYNTHESIS_SYSTEM_PROMPT },
           { role: 'user', content: userPrompt },
@@ -340,7 +340,7 @@ TASK: Answer the question with:
       ms: synthesisTimed.ms,
       status: 'ok',
       detail: {
-        model: 'gpt-4o',
+        model: llmModels().synthesis,
         promptChars: userPrompt.length,
         promptTokens: response.usage?.prompt_tokens ?? null,
         completionTokens: response.usage?.completion_tokens ?? null,

@@ -177,7 +177,7 @@ function render(data) {
   // Answer
   var ansSec = document.getElementById('answerSec');
   if (data.answer) { ansSec.style.display = 'block'; document.getElementById('answer').textContent = data.answer; }
-  else { ansSec.style.display = 'block'; document.getElementById('answer').innerHTML = '<i style="color:var(--dim)">No synthesized answer (OPENAI_API_KEY not set or synthesis failed) — raw retrieval below.</i>'; }
+  else { ansSec.style.display = 'block'; document.getElementById('answer').innerHTML = '<i style="color:var(--dim)">No synthesized answer (no LLM key set or synthesis failed) — raw retrieval below.</i>'; }
 
   // Patterns
   var pats = data.patterns || {};

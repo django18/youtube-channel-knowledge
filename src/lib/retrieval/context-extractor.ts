@@ -1,5 +1,5 @@
 import { QueryContextSchema, type QueryContext } from '../schemas/context';
-import { getOpenAI } from '../openai';
+import { getLLM, hasLLM, llmModels } from '../llm';
 
 const EXTRACTION_PROMPT = `Extract the founder/startup context from this question about building products and businesses.
 
@@ -18,7 +18,8 @@ Return a JSON object with ONLY the fields that are clearly implied by the questi
 Do not guess. Only include fields with clear evidence in the question.`;
 
 /**
- * Extract structured context from a free-text question using gpt-4o-mini.
+ * Extract structured context from a free-text question using the
+ * configured extraction model (grok-4-fast / gpt-4o-mini).
  * Falls back to keyword heuristics when no API key is configured or the
  * call fails, so /api/ask degrades instead of erroring.
  */
@@ -40,13 +41,13 @@ export interface ContextExtractionResult {
 export async function extractQueryContextDetailed(
   question: string
 ): Promise<ContextExtractionResult> {
-  if (!process.env.OPENAI_API_KEY) {
+  if (!hasLLM()) {
     return { context: heuristicContext(question), method: 'heuristic' };
   }
 
   try {
-    const response = await getOpenAI().chat.completions.create({
-      model: 'gpt-4o-mini',
+    const response = await getLLM().chat.completions.create({
+      model: llmModels().extraction,
       messages: [
         { role: 'user', content: EXTRACTION_PROMPT.replace('{question}', question) },
       ],

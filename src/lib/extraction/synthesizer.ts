@@ -1,6 +1,6 @@
 import { getNeo4jDriver } from './graph-store';
 import { searchVectorDB, type SearchResult } from '../youtube-vectorstore';
-import { getOpenAI } from '../openai';
+import { getLLM, hasLLM, llmModels } from '../llm';
 
 export interface SynthesisRequest {
   profile: string; // e.g. "Solo Technical Founder"
@@ -109,7 +109,7 @@ export async function synthesizeKnowledge(
       return [];
     });
 
-    if (!process.env.OPENAI_API_KEY) {
+    if (!hasLLM()) {
       return {
         profile: request.profile,
         patterns,
@@ -150,8 +150,8 @@ export async function synthesizeKnowledge(
       Be specific and cite the patterns and quotes.
     `;
 
-    const response = await getOpenAI().chat.completions.create({
-      model: 'gpt-4o',
+    const response = await getLLM().chat.completions.create({
+      model: llmModels().synthesis,
       messages: [{ role: 'user', content: synthesisPrompt }],
       temperature: 0.3,
     });

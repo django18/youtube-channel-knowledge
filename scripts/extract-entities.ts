@@ -25,9 +25,7 @@ async function extractSingle(videoId: string) {
     process.exit(1);
   }
 
-  const result = await extractEntities(transcript, {
-    model: 'gpt-4o-mini',
-  });
+  const result = await extractEntities(transcript);
 
   if (result.success && result.entities) {
     const outputPath = join(OUTPUT_DIR, `${videoId}.json`);
