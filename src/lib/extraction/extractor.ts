@@ -12,6 +12,27 @@ export interface ExtractionResult {
   tokensUsed?: number;
 }
 
+// Cap prompt size: full transcripts run 20-110K chars, which blows both
+// per-request and per-day token budgets on free tiers. Founder/startup
+// intro lives at the head, strategies in the middle, outcomes/advice at
+// the tail — sample those regions instead of sending everything.
+const MAX_EXTRACTION_CHARS = parseInt(process.env.MAX_EXTRACTION_CHARS || '12000');
+
+export function sampleTranscript(text: string, maxChars: number = MAX_EXTRACTION_CHARS): string {
+  if (text.length <= maxChars) return text;
+  const head = Math.floor(maxChars * 0.45);
+  const mid = Math.floor(maxChars * 0.2);
+  const tail = maxChars - head - mid;
+  const midStart = Math.floor(text.length / 2 - mid / 2);
+  return (
+    text.slice(0, head) +
+    '\n[...transcript trimmed...]\n' +
+    text.slice(midStart, midStart + mid) +
+    '\n[...transcript trimmed...]\n' +
+    text.slice(text.length - tail)
+  );
+}
+
 /**
  * Extract entities from a video transcript using OpenAI
  */
@@ -30,7 +51,7 @@ export async function extractEntities(
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const prompt = buildExtractionPrompt(transcript.fullTranscript);
+      const prompt = buildExtractionPrompt(sampleTranscript(transcript.fullTranscript));
 
       const response = await getLLM().chat.completions.create({
         model,

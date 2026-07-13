@@ -5,10 +5,10 @@ import { z } from 'zod';
  */
 export const FounderSchema = z.object({
   name: z.string().describe('Founder name'),
-  type: z.enum(['solo', 'team']).describe('Solo founder or team'),
+  type: z.enum(['solo', 'team']).optional().catch(undefined).describe('Solo founder or team'),
   technical: z.boolean().describe('Has technical/coding background'),
-  background: z.string().describe('Previous experience and background'),
-  experience: z.enum(['beginner', 'experienced']).optional(),
+  background: z.string().optional().catch(undefined).describe('Previous experience and background'),
+  experience: z.enum(['beginner', 'experienced']).optional().catch(undefined),
 });
 
 export type Founder = z.infer<typeof FounderSchema>;
@@ -27,11 +27,11 @@ export const StartupSchema = z.object({
     'tool',
     'API',
     'other'
-  ]).describe('Type of product'),
-  niche: z.string().describe('Specific market niche or vertical'),
-  stage: z.enum(['idea', 'MVP', 'growth', 'scale']).describe('Current stage'),
-  platform: z.enum(['web', 'mobile', 'desktop', 'API', 'multi-platform']).optional(),
-  businessModel: z.enum(['subscription', 'one-time', 'freemium', 'ads', 'marketplace']).optional(),
+  ]).catch('other').describe('Type of product'),
+  niche: z.string().optional().catch(undefined).describe('Specific market niche or vertical'),
+  stage: z.enum(['idea', 'MVP', 'growth', 'scale']).optional().catch(undefined).describe('Current stage'),
+  platform: z.enum(['web', 'mobile', 'desktop', 'API', 'multi-platform']).optional().catch(undefined),
+  businessModel: z.enum(['subscription', 'one-time', 'freemium', 'ads', 'marketplace']).optional().catch(undefined),
 });
 
 export type Startup = z.infer<typeof StartupSchema>;
@@ -51,10 +51,10 @@ export const StrategySchema = z.object({
     'cold outreach',
     'product-led',
     'other'
-  ]).describe('Strategy category'),
-  details: z.string().describe('How they executed this strategy'),
-  success: z.boolean().describe('Whether this strategy worked well'),
-  cost: z.enum(['free', 'low', 'medium', 'high']).optional(),
+  ]).catch('other').describe('Strategy category'),
+  details: z.string().optional().catch(undefined).describe('How they executed this strategy'),
+  success: z.boolean().optional().catch(undefined).describe('Whether this strategy worked well'),
+  cost: z.enum(['free', 'low', 'medium', 'high']).optional().catch(undefined),
   timeToResults: z.string().optional().describe('How long until they saw results'),
 });
 
@@ -76,7 +76,7 @@ export const ToolSchema = z.object({
     'no-code',
     'AI',
     'other'
-  ]).describe('Tool category'),
+  ]).catch('other').describe('Tool category'),
   purpose: z.string().optional().describe('Why they used it'),
 });
 
@@ -86,10 +86,10 @@ export type Tool = z.infer<typeof ToolSchema>;
  * Outcome entity schema
  */
 export const OutcomeSchema = z.object({
-  users: z.number().optional().describe('Number of users/customers'),
-  revenue: z.number().optional().describe('Monthly revenue in USD'),
-  mrr: z.number().optional().describe('Monthly recurring revenue'),
-  timeline: z.string().describe('Time taken to reach this outcome'),
+  users: z.number().optional().catch(undefined).describe('Number of users/customers'),
+  revenue: z.number().optional().catch(undefined).describe('Monthly revenue in USD'),
+  mrr: z.number().optional().catch(undefined).describe('Monthly recurring revenue'),
+  timeline: z.string().optional().catch(undefined).describe('Time taken to reach this outcome'),
   metric: z.string().optional().describe('Primary success metric'),
   value: z.string().optional().describe('Value of the metric'),
 });
@@ -102,7 +102,7 @@ export type Outcome = z.infer<typeof OutcomeSchema>;
 export const WorkflowStepSchema = z.object({
   order: z.number().describe('Step number'),
   action: z.string().describe('What to do'),
-  details: z.string().describe('How to do it'),
+  details: z.string().optional().catch(undefined).describe('How to do it'),
   duration: z.string().optional().describe('Expected time'),
 });
 
@@ -113,9 +113,9 @@ export type WorkflowStep = z.infer<typeof WorkflowStepSchema>;
  */
 export const WorkflowSchema = z.object({
   name: z.string().describe('Workflow name'),
-  goal: z.string().describe('What this workflow achieves'),
+  goal: z.string().optional().catch(undefined).describe('What this workflow achieves'),
   steps: z.array(WorkflowStepSchema).describe('Step-by-step process'),
-  outcome: z.string().describe('Result achieved'),
+  outcome: z.string().optional().catch(undefined).describe('Result achieved'),
   successFactors: z.array(z.string()).optional().describe('Key factors for success'),
   context: z.object({
     founderType: z.enum(['solo', 'team']).optional(),
