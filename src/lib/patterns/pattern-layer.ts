@@ -39,6 +39,37 @@ export interface ContextPatterns {
   outcomes: OutcomeStats;
   computedAt: string;
   fromCache: boolean;
+  /** Which filters were dropped to find matches (empty = exact context matched). */
+  relaxedFilters: string[];
+}
+
+/**
+ * Progressive relaxation order. Interview data describes startups
+ * retrospectively (most are at 'growth' stage by interview time), so a
+ * question about "building an MVP" must not hard-filter on stage=MVP —
+ * drop the least-discriminating filters first until the graph matches.
+ */
+export function relaxationLevels(context: QueryContext): Array<{ context: QueryContext; dropped: string[] }> {
+  const levels: Array<{ context: QueryContext; dropped: string[] }> = [
+    { context, dropped: [] },
+  ];
+  if (context.stage !== undefined) {
+    const { stage, ...rest } = context;
+    levels.push({ context: rest, dropped: ['stage'] });
+  }
+  const last = levels[levels.length - 1].context;
+  if (last.startupType !== undefined || last.businessModel !== undefined) {
+    const { startupType, businessModel, ...rest } = last;
+    levels.push({
+      context: rest,
+      dropped: [...levels[levels.length - 1].dropped, 'startupType', 'businessModel'],
+    });
+  }
+  const keys = Object.keys(levels[levels.length - 1].context).filter(k => k !== 'goal');
+  if (keys.length > 0) {
+    levels.push({ context: {}, dropped: ['all'] });
+  }
+  return levels;
 }
 
 /**
@@ -113,10 +144,32 @@ export async function getPatterns(context: QueryContext): Promise<ContextPattern
 }
 
 /**
- * Compute patterns live from Neo4j: top strategies (with success rate),
- * top tools, matching workflows, and aggregate outcomes for the context.
+ * Compute patterns live from Neo4j with progressive filter relaxation:
+ * if the exact context matches nothing, drop filters (stage first)
+ * until it does.
  */
 export async function computePatterns(context: QueryContext): Promise<ContextPatterns> {
+  const levels = relaxationLevels(context);
+  let result: ContextPatterns | null = null;
+
+  for (const level of levels) {
+    result = {
+      ...(await computePatternsExact(level.context)),
+      context,
+      cacheKey: contextCacheKey(context),
+      relaxedFilters: level.dropped,
+    };
+    const hasData =
+      result.topStrategies.length > 0 ||
+      result.topTools.length > 0 ||
+      result.workflows.length > 0;
+    if (hasData) return result;
+  }
+
+  return result as ContextPatterns;
+}
+
+async function computePatternsExact(context: QueryContext): Promise<ContextPatterns> {
   const session = getNeo4jDriver().session();
   const { clause, params } = buildContextFilter(context);
 
@@ -197,6 +250,7 @@ export async function computePatterns(context: QueryContext): Promise<ContextPat
       },
       computedAt: new Date().toISOString(),
       fromCache: false,
+      relaxedFilters: [],
     };
   } finally {
     await session.close();

@@ -1,7 +1,7 @@
 import { int as neo4jInt } from 'neo4j-driver';
 import { getNeo4jDriver } from '../extraction/graph-store';
 import { searchVectorDB, type SearchResult } from '../youtube-vectorstore';
-import { getPatterns, type ContextPatterns } from '../patterns/pattern-layer';
+import { getPatterns, relaxationLevels, type ContextPatterns } from '../patterns/pattern-layer';
 import { extractQueryContextDetailed } from './context-extractor';
 import { QueryContextSchema, type QueryContext } from '../schemas/context';
 import { getLLM, hasLLM, llmModels, stripReasoning, reasoningRequestOverrides } from '../llm';
@@ -58,12 +58,28 @@ export interface AdvisorAnswer {
 }
 
 /**
- * Multi-hop graph query: founders matching the context, with their full
- * chain — startup → strategies → tools → outcomes → source video.
+ * Multi-hop graph query with progressive filter relaxation: founders
+ * matching the context, with their full chain — startup → strategies →
+ * tools → outcomes → source video. Interview data is retrospective
+ * (most startups are past MVP by interview time), so strict context
+ * filters that match nothing get relaxed instead of returning empty.
  */
 async function findSimilarFounders(
   context: QueryContext,
   limit: number = 5
+): Promise<{ examples: FounderExample[]; relaxedFilters: string[] }> {
+  for (const level of relaxationLevels(context)) {
+    const examples = await findFoundersExact(level.context, limit);
+    if (examples.length > 0 || level.dropped.includes('all')) {
+      return { examples, relaxedFilters: level.dropped };
+    }
+  }
+  return { examples: [], relaxedFilters: [] };
+}
+
+async function findFoundersExact(
+  context: QueryContext,
+  limit: number
 ): Promise<FounderExample[]> {
   const session = getNeo4jDriver().session();
 
@@ -104,7 +120,7 @@ async function findSimilarFounders(
                 collect(DISTINCT t.name) AS tools,
                 o.mrr AS mrr, o.users AS users, o.timeline AS timeline,
                 v.url AS videoUrl, v.title AS videoTitle
-         ORDER BY o.mrr DESC
+         ORDER BY coalesce(o.mrr, o.users, 0) DESC
          LIMIT $limit`,
         { ...params, limit: neo4jInt(limit) }
       )
@@ -203,6 +219,7 @@ export async function ask(
           outcomes: { founderCount: 0, avgMrr: null, avgUsers: null },
           computedAt: new Date().toISOString(),
           fromCache: false,
+          relaxedFilters: [],
         };
         return { value: empty, failed: true };
       }
@@ -212,7 +229,10 @@ export async function ask(
         return { value: await findSimilarFounders(context), failed: false };
       } catch (error) {
         console.warn('Graph example lookup failed:', error);
-        return { value: [] as FounderExample[], failed: true };
+        return {
+          value: { examples: [] as FounderExample[], relaxedFilters: [] as string[] },
+          failed: true,
+        };
       }
     }),
     timed(async () => {
@@ -226,7 +246,8 @@ export async function ask(
   ]);
 
   const patterns = patternsLeg.result.value;
-  const examples = examplesLeg.result.value;
+  const examples = examplesLeg.result.value.examples;
+  const exampleRelaxation = examplesLeg.result.value.relaxedFilters;
   const vectorResults = vectorLeg.result.value;
 
   stages.push({
@@ -240,6 +261,7 @@ export async function ask(
       tools: patterns.topTools.length,
       workflows: patterns.workflows.length,
       foundersWithOutcomes: patterns.outcomes.founderCount,
+      relaxedFilters: patterns.relaxedFilters,
     },
   });
   stages.push({
@@ -248,6 +270,7 @@ export async function ask(
     status: examplesLeg.result.failed ? 'failed' : 'ok',
     detail: {
       founders: examples.length,
+      relaxedFilters: exampleRelaxation,
       hops: 'Founder → Startup → Strategy/Tool → Outcome → Video',
     },
   });

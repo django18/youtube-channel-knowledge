@@ -213,6 +213,11 @@ function render(data) {
   }).join('');
 }
 
+function relaxNote(filters) {
+  if (!filters || !filters.length) return '';
+  return '<br><span style="color:var(--amber);font-size:11px">↓ relaxed filters: ' + filters.map(esc).join(', ') + ' (exact context matched nothing)</span>';
+}
+
 function stageBody(s, data) {
   var d = s.detail || {};
   if (s.stage === 'context-extraction') {
@@ -222,10 +227,10 @@ function stageBody(s, data) {
   }
   if (s.stage === 'pattern-layer') {
     return (d.fromCache ? '⚡ <b>Redis cache HIT</b>' : '🔄 cache miss → live Neo4j aggregation') +
-      '<br>key: <code>' + esc(d.cacheKey) + '</code><br>' + d.strategies + ' strategies · ' + d.tools + ' tools · ' + d.workflows + ' workflows · ' + d.foundersWithOutcomes + ' founders w/ outcomes';
+      '<br>key: <code>' + esc(d.cacheKey) + '</code><br>' + d.strategies + ' strategies · ' + d.tools + ' tools · ' + d.workflows + ' workflows · ' + d.foundersWithOutcomes + ' founders w/ outcomes' + relaxNote(d.relaxedFilters);
   }
   if (s.stage === 'graph-examples') {
-    return (s.status === 'failed' ? '⚠️ Neo4j unreachable<br>' : '') + '<b>' + d.founders + '</b> matching founders<br><span style="font-size:11px">' + esc(d.hops) + '</span>';
+    return (s.status === 'failed' ? '⚠️ Neo4j unreachable<br>' : '') + '<b>' + d.founders + '</b> matching founders' + relaxNote(d.relaxedFilters) + '<br><span style="font-size:11px">' + esc(d.hops) + '</span>';
   }
   if (s.stage === 'vector-search') {
     return (s.status === 'failed' ? '⚠️ ChromaDB unreachable<br>' : '') + '<b>' + d.chunks + '</b> chunks retrieved<br>top sim: ' + (d.topSimilarity != null ? d.topSimilarity.toFixed(3) : '—') + ' · avg: ' + (d.avgSimilarity != null ? d.avgSimilarity.toFixed(3) : '—') + '<br><span style="font-size:11px">' + esc(d.embedder) + '</span>';
