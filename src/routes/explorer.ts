@@ -63,7 +63,18 @@ const EXPLORER_HTML = `<!DOCTYPE html>
   .tl-track { position: relative; background: var(--panel); border-radius: 4px; height: 14px; }
   .tl-fill { position: absolute; height: 100%; border-radius: 4px; min-width: 2px; }
 
-  .answer { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; white-space: pre-wrap; margin-top: 10px; }
+  .answer { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-top: 10px; line-height: 1.65; }
+  .answer h2, .answer h3 { font-size: 15px; margin: 18px 0 8px; color: var(--text); }
+  .answer h2:first-child, .answer h3:first-child { margin-top: 0; }
+  .answer p { margin: 8px 0; }
+  .answer ul, .answer ol { margin: 8px 0 8px 22px; }
+  .answer li { margin: 5px 0; }
+  .answer a { color: var(--accent); text-decoration: none; }
+  .answer a:hover { text-decoration: underline; }
+  .answer code { background: var(--panel2); border-radius: 4px; padding: 1px 5px; font-size: 12px; }
+  .answer strong { color: #fff; }
+  .answer hr { border: 0; border-top: 1px solid var(--border); margin: 14px 0; }
+  .answer blockquote { border-left: 3px solid var(--accent); margin: 8px 0; padding: 2px 12px; color: var(--dim); }
   .founder-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
   .founder-card .name { font-weight: 600; }
   .founder-card .meta { color: var(--dim); font-size: 12px; margin: 3px 0 6px; }
@@ -176,7 +187,7 @@ function render(data) {
 
   // Answer
   var ansSec = document.getElementById('answerSec');
-  if (data.answer) { ansSec.style.display = 'block'; document.getElementById('answer').textContent = data.answer; }
+  if (data.answer) { ansSec.style.display = 'block'; document.getElementById('answer').innerHTML = renderMarkdown(data.answer); }
   else { ansSec.style.display = 'block'; document.getElementById('answer').innerHTML = '<i style="color:var(--dim)">No synthesized answer (no LLM key set or synthesis failed) — raw retrieval below.</i>'; }
 
   // Patterns
@@ -211,6 +222,40 @@ function render(data) {
       '<div class="bar-row" style="grid-template-columns: 80px 1fr 50px"><div class="label" style="color:var(--dim)">similarity</div><div class="bar-track"><div class="bar-fill" style="width:' + simW + '%;background:var(--accent)"></div></div><div class="val">' + (s.similarity || 0).toFixed(2) + '</div></div>' +
       '<div class="excerpt">' + esc(s.excerpt) + '…</div></div>';
   }).join('');
+}
+
+function renderMarkdown(md) {
+  var lines = esc(md).split('\\n');
+  var html = [], inUl = false, inOl = false, para = [];
+  function inline(t) {
+    return t
+      .replace(/\\[([^\\]]+)\\]\\((https?:[^)\\s]+)\\)/g, '<a href="$2" target="_blank">$1</a>')
+      .replace(/\\*\\*([^*]+)\\*\\*/g, '<strong>$1</strong>')
+      .replace(/\\*([^*]+)\\*/g, '<em>$1</em>')
+      .replace(/\\u0060([^\\u0060]+)\\u0060/g, '<code>$1</code>');
+  }
+  function closeLists() {
+    if (inUl) { html.push('</ul>'); inUl = false; }
+    if (inOl) { html.push('</ol>'); inOl = false; }
+  }
+  function flushPara() {
+    if (para.length) { html.push('<p>' + inline(para.join(' ')) + '</p>'); para = []; }
+  }
+  for (var i = 0; i < lines.length; i++) {
+    var l = lines[i];
+    var h = l.match(/^(#{1,4})\\s+(.*)$/);
+    var ul = l.match(/^\\s*[-*]\\s+(.*)$/);
+    var ol = l.match(/^\\s*\\d+\\.\\s+(.*)$/);
+    if (h) { flushPara(); closeLists(); html.push('<h3>' + inline(h[2]) + '</h3>'); }
+    else if (/^\\s*(---+|___+)\\s*$/.test(l)) { flushPara(); closeLists(); html.push('<hr>'); }
+    else if (ul) { flushPara(); if (inOl) { html.push('</ol>'); inOl = false; } if (!inUl) { html.push('<ul>'); inUl = true; } html.push('<li>' + inline(ul[1]) + '</li>'); }
+    else if (ol) { flushPara(); if (inUl) { html.push('</ul>'); inUl = false; } if (!inOl) { html.push('<ol>'); inOl = true; } html.push('<li>' + inline(ol[1]) + '</li>'); }
+    else if (l.match(/^\\s*&gt;\\s?(.*)$/)) { flushPara(); closeLists(); html.push('<blockquote>' + inline(l.replace(/^\\s*&gt;\\s?/, '')) + '</blockquote>'); }
+    else if (l.trim() === '') { flushPara(); closeLists(); }
+    else { para.push(l.trim()); }
+  }
+  flushPara(); closeLists();
+  return html.join('\\n');
 }
 
 function relaxNote(filters) {
